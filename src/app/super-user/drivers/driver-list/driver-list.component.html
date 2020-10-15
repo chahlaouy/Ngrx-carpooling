@@ -1,0 +1,39 @@
+<ion-header>
+<ion-toolbar color="tertiary">
+  <ion-title>
+    Drivers List 
+  </ion-title>
+</ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-label>
+      search
+    </ion-label>
+    <ion-input></ion-input> 
+  </ion-item>
+  <ion-card *ngFor="let driver of drivers$ | async">
+  <!-- <ion-card *ngFor="let driver of drivers$"> -->
+    <ion-card-header>
+      <ion-card-title>
+        {{driver.username}} 
+      </ion-card-title>
+      <ion-card-subtitle>
+        {{driver.email}}
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item lines="none">
+        <ion-icon name="options-outline" slot="end" color="tertiary"></ion-icon>
+        <ion-icon name="trash-outline" slot="end" color="danger"></ion-icon>
+        <ion-label>
+         <span *ngFor="let i of [1, 2, 3, 4]">
+          <ion-icon name="star-outline" color="warning"></ion-icon>
+         </span>
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  
+
+</ion-content>

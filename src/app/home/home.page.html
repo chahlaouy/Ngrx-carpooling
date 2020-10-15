@@ -14,7 +14,12 @@
   </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    This our home page
+    <ion-button [routerLink]="['/admin/drivers/driver-list']">
+      Click here To Go to Driver Page
+    </ion-button>
+    <ion-button [routerLink]="['/admin/riders/rider-list']">
+      Click here To Go to Riders Page
+    </ion-button>
   </div>
 </ion-content>
