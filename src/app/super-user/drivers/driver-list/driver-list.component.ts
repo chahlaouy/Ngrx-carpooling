@@ -30,13 +30,19 @@ export class DriverListComponent implements OnInit {
 
     this.drivers$ =  this.store.select(fromStore.getDriversDataAsArray)
     this.loaded$ = this.store.select(fromStore.getDriversloading)
-    this.testEntities$ = this.store.select(fromStore.getDriversEntities)
-    // console.log(this.testEntities$)
-    this.presentLoading().then((l) => {
-      l.present()
+
+    /**
+     * GetEntities As Big Object For testing
+     */
+    // this.testEntities$ = this.store.select(fromStore.getDriversEntities)
+    // this.testEntities$.subscribe(data => {
+    //   console.log(data)
+    // })
+    this.presentLoading().then((spinner) => {
+      spinner.present()
       this.loaded$.subscribe(loaded => {
         if (loaded){
-          l.dismiss()
+          spinner.dismiss()
         }
       })
     })
@@ -46,6 +52,10 @@ export class DriverListComponent implements OnInit {
     return await this.loadingController.create({
       message: 'ارجوك انتظر ...',
     });
+  }
+  reload(){
+    this.store.dispatch(new fromStore.LoadDrivers());
+    
   }
 
 }

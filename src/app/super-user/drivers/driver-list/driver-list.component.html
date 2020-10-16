@@ -12,6 +12,9 @@
     </ion-label>
     <ion-input></ion-input> 
   </ion-item>
+  <ion-item>
+    <button (click)="reload()">reload</button>
+  </ion-item>
   <ion-card *ngFor="let driver of drivers$ | async">
     <ion-card-header>
       <ion-card-title>
