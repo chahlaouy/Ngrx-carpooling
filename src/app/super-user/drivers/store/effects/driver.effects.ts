@@ -1,18 +1,36 @@
 import { Injectable } from '@angular/core'
 
-import { Actions, Effect, ofType } from '@ngrx/effects'
-import { observable, of } from 'rxjs'
-import { map, mergeMap, catchError } from 'rxjs/operators'
+import { Effect, Actions, ofType } from '@ngrx/effects';
+import { of } from 'rxjs';
 
-import { DriverService } from '../../services/driver.service'
-import * as driverActions from '../actions/driver.actions'
-import { Driver } from '../../models/driver.model'
-@Injectable()
-export class DriverEffect {
+import { catchError, map, switchMap } from 'rxjs/operators'
+import { Driver } from '../../models/driver.model';
+import { DriverService } from '../../services/driver.service';
+import * as driversActions from '../actions/driver.actions'
 
-    constructor(
+@Injectable() 
+export class DriversEffect {
+
+    constructor (
         private actions$: Actions,
-        private driverService: DriverService
+        private driverSer: DriverService
     ){}
 
+    @Effect()
+    loadDrivers = this.actions$.pipe(ofType(driversActions.DriversActionTypes.LOAD_DRIVERS)).pipe(
+        switchMap(() => {
+            return this.driverSer.getDrivers().pipe(
+                map((value) => {
+                    const entities : {[id: string] : Driver} = {};
+                    value.docs.forEach(doc => {
+                        let index= doc.id;
+                        entities[index] = doc.data()
+                    });
+                    return new driversActions.LoadDriversSuccess(entities)
+                }
+                ),
+                catchError((error) => of(new driversActions.LoadDriversFail(error)) )
+            )
+        })
+    )
 }

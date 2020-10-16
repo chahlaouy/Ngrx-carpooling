@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
 
-import { Observable } from "rxjs";
+import {  AngularFirestore } from '@angular/fire/firestore';
+
+import { Observable, of } from "rxjs";
 
 import { Driver } from "../models/driver.model";
 
@@ -10,29 +11,27 @@ import { Driver } from "../models/driver.model";
 })
 export class DriverService {
   private driversUrl = "http://localhost:3000/admin/drivers";
+  constructor(
+    private db: AngularFirestore
+  ) {}
 
-  constructor(private http: HttpClient) {}
-
-  getCustomers(): Observable<Driver[]> {
-    return this.http.get<Driver[]>(this.driversUrl);
+  getDrivers(): Observable<any>{
+    return this.db.collection("users").get()
   }
 
-  getCustomerById(payload: number): Observable<Driver> {
-    return this.http.get<Driver>(`${this.driversUrl}/${payload}`);
+  getDriverById(payload: string): Observable<any>{
+    return this.db.doc(`users/${payload}`).get()
   }
 
-  createCustomer(payload: Driver): Observable<Driver> {
-    return this.http.post<Driver>(this.driversUrl, payload);
+  createDriver(payload: Driver): Observable<any> {
+    return null
   }
 
-  updateCustomer(driver: Driver): Observable<Driver> {
-    return this.http.patch<Driver>(
-      `${this.driversUrl}/${driver.id}`,
-      driver
-    );
+  updateDriver(driver: Driver): Observable<any> {
+    return null
   }
 
-  deleteCustomer(payload: number) {
-    return this.http.delete(`${this.driversUrl}/${payload}`);
+  deleteDriver(payload: number) {
+    return null
   }
 }

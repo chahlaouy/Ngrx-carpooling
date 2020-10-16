@@ -14,7 +14,7 @@ export class LoadDrivers implements Action {
 
 export class LoadDriversSuccess implements Action {
     readonly type = DriversActionTypes.LOAD_DRIVERS_SUCCESS
-    constructor(public payload: {drivers: Driver[]}){}
+    constructor(public payload: any){}
 }
 
 export class LoadDriversFail implements Action {

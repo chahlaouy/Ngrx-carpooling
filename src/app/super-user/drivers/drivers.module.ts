@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+
+import { HttpClientModule } from '@angular/common/http';
 /**
  * Importing The Reactive And Forms Module To Deal With Form In Angular
  */
@@ -19,7 +21,8 @@ import { IonicModule } from '@ionic/angular';
  */
 
 import { StoreModule } from '@ngrx/store'
-import { reducers } from './store/reducers/index'
+import { EffectsModule } from '@ngrx/effects'
+import { reducers, effects } from './store'
 
 /**
  * Import Components Of The Drivers Module
@@ -64,9 +67,11 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature("superUserDrivers", reducers),
+    EffectsModule.forFeature(effects),
     FormsModule,
     ReactiveFormsModule,
-    IonicModule
+    IonicModule,
+    HttpClientModule
   ]
 })
 export class DriversModule { }

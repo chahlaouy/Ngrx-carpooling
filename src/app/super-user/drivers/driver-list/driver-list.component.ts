@@ -5,11 +5,11 @@ import { Component, OnInit } from '@angular/core';
  */
 
 import { Store } from '@ngrx/store'
-import { Observable } from 'rxjs';
-
 import * as fromStore from '../store'
+import { Observable } from 'rxjs';
+import { DriverService } from '../services/driver.service';
+import { LoadingController } from '@ionic/angular';
 
- 
 @Component({
   selector: 'app-driver-list',
   templateUrl: './driver-list.component.html',
@@ -17,18 +17,35 @@ import * as fromStore from '../store'
 })
 export class DriverListComponent implements OnInit {
 
-  drivers$: any;
-
+  drivers$: Observable<any>;
+  testEntities$: Observable<any>;
+  loaded$: Observable<any>;
   constructor(
     private store: Store<fromStore.DriversState>,
-    ) 
-    { 
-       
-    }
+    public loadingController: LoadingController
+    ) {}
 
   ngOnInit() {
-       this.drivers$ =  this.store.select(fromStore.getDriversData)
-        
+    this.store.dispatch(new fromStore.LoadDrivers());
+
+    this.drivers$ =  this.store.select(fromStore.getDriversDataAsArray)
+    this.loaded$ = this.store.select(fromStore.getDriversloading)
+    this.testEntities$ = this.store.select(fromStore.getDriversEntities)
+    // console.log(this.testEntities$)
+    this.presentLoading().then((l) => {
+      l.present()
+      this.loaded$.subscribe(loaded => {
+        if (loaded){
+          l.dismiss()
+        }
+      })
+    })
+  }
+
+  async presentLoading() {
+    return await this.loadingController.create({
+      message: 'ارجوك انتظر ...',
+    });
   }
 
 }

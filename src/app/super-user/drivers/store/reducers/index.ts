@@ -13,6 +13,13 @@ export const getGlobalDriversState = createFeatureSelector<DriversState>('superU
 
 export const getDriversState = createSelector(getGlobalDriversState, (state:DriversState) => state.drivers)
 
-export const getDriversData = createSelector(getDriversState, DriverReducer.getDriversData)
+export const getDriversEntities = createSelector(getDriversState, DriverReducer.getDriversData)
+
+export const getDriversDataAsArray = createSelector(getDriversEntities, (entities) => {
+    /**
+    * Convertitng the entities Object into An Array
+    */
+    return Object.keys(entities).map(id => entities[id])
+})
 export const getDriversLoaded = createSelector(getDriversState, DriverReducer.getDriversLoaded)
 export const getDriversloading = createSelector(getDriversState, DriverReducer.getDriversLoading)

@@ -8,73 +8,14 @@ import * as driverActions from '../actions/driver.actions'
 // }
 
 export interface DriverState{
-    data: any,
+    entities: { [id: string] : Driver},
     loading: boolean,
     loaded: boolean,
     error: string
 }
 
 export const initialState: DriverState = {
-    data: [
-        {
-            id: '123',
-            gender: 'male',
-            username: 'john',
-            email: 'john@email.com',
-            picture: 'picture.url',
-            phone: '56 128 454',
-            age: 29,
-            car: {
-            brand: 'mercedess',
-            model: 'CLA',
-            state: 2020,
-            serialNumber: 220
-            },
-            favorite: {
-                pets: 1,
-                smoking: 0,
-                music: 1,
-                chat: 1
-            },
-            reviews: {
-                authorName: 'chahlaouy',
-                authorProfilePicture: 'chahlaouy.url',
-                headLine: 'It was a good trip',
-                body: 'I really enjoyed the trip thanks a lot',
-                rating: 4
-            },
-            trips: []
-        },
-        {
-            id: '123',
-            gender: 'male',
-            username: 'john',
-            email: 'john@email.com',
-            picture: 'picture.url',
-            phone: '56 128 454',
-            age: 29,
-            car: {
-            brand: 'mercedess',
-            model: 'CLA',
-            state: 2020,
-            serialNumber: 220
-            },
-            favorite: {
-            pets: 1,
-            smoking: 0,
-            music: 1,
-            chat: 1
-            },
-            reviews: {
-            authorName: 'chahlaouy',
-            authorProfilePicture: 'chahlaouy.url',
-            headLine: 'It was a good trip',
-            body: 'I really enjoyed the trip thanks a lot',
-            rating: 4.5
-            },
-            trips: []
-        }
-    ],
+    entities: {},
     loading: false,
     loaded: false,
     error: ""
@@ -93,11 +34,12 @@ export function DriverReducer(
                 }
             }
             case driverActions.DriversActionTypes.LOAD_DRIVERS_SUCCESS: {
+                const entities = action.payload
                 return {
                     ...state,
                     loading: false,
                     loaded: true,
-                    data: action.payload
+                    entities
                 }
             }
             case driverActions.DriversActionTypes.LOAD_DRIVERS_FAIL: {
@@ -115,6 +57,6 @@ export function DriverReducer(
 }
 
 
+export const getDriversData = (state : DriverState) => state.entities;
 export const getDriversLoading = (state : DriverState) => state.loading;
 export const getDriversLoaded = (state : DriverState) => state.loaded;
-export const getDriversData = (state : DriverState) => state.data;
