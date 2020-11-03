@@ -11,7 +11,6 @@
             <p>مرحبا بكم في تطبيق معك</p>
           </ion-label>
           <img src="../assets/avatar.png" alt="">
-          <!-- <img src="https://firebasestorage.googleapis.com/v0/b/carpooling-7d926.appspot.com/o/RoomsImages%2F1602342161327?alt=media&token=1d50a100-851b-4a87-b17f-ca793e543301" alt=""> -->
         </div>
         <div class="btn">
           <ion-button expand="block" mode="ios">
@@ -34,7 +33,7 @@
               اضف رحلة
               <ion-icon name="add-circle" slot="start"></ion-icon>
             </ion-item>
-            <ion-item button [routerLink]="['/driver/inbox']">
+            <ion-item button [routerLink]="['/driver/box']">
               صندوق الرسائل
               <ion-icon name="chatbubble" slot="start"></ion-icon>
             </ion-item>
@@ -62,13 +61,13 @@
           </ion-card-header>
           <ion-card-content>
             <ion-menu-toggle>
-              <ion-item [routerLink]="['/register']" >
+              <ion-item [routerLink]="['/driver/register']" >
                 <ion-label class="grey-100">عضو جديد</ion-label>
                 <ion-icon name="person-add-outline" class="grey-100"></ion-icon>
               </ion-item>
             </ion-menu-toggle>
             <ion-menu-toggle>
-              <ion-item [routerLink]="['/login']">
+              <ion-item [routerLink]="['/driver/login']">
                 <ion-label class="grey-100">تسجيل الدخول</ion-label>
                 <ion-icon name="log-in-outline" class="grey-100"></ion-icon>
               </ion-item>

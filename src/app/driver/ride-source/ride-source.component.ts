@@ -97,7 +97,7 @@ export class RideSourceComponent implements OnInit {
 
   nextStepDestination(){
     this.userSer.setRideSource({lat: this.latitude, lng: this.longitude, address: this.address});
-    this.router.navigate(['/add/ride-destination'])
+    this.router.navigate(['/driver/add/ride-destination'])
   }
 
 }

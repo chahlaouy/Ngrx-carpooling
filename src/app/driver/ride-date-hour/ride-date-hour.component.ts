@@ -16,11 +16,11 @@ export class RideDateHourComponent implements OnInit {
   ) { }
 
 
-  ngOnInit() {}
+  ngOnInit() {} 
 
   nextStepRidePrice(){
     this.userSer.setNumberOfSeats(this.numberOfSeats);
-    this.router.navigate(['add/ride-price']);
+    this.router.navigate(['/driver/add/ride-price']);
   }
 
 }

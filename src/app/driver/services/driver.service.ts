@@ -3,15 +3,16 @@ import {  AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { MapsAPILoader } from '@agm/core';
 
+import { FirebaseService } from './firebase.service'
 @Injectable({
   providedIn: 'root'
 })
 export class DriverService {
-
+  
   private rideSource: any;
   private rideDestination: any;
   private rideNumberOfSeats: any;
-  private rideCost: any;
+  private ridePrice: any;
   private rideDistance: {
     text: any,
     value: any
@@ -23,9 +24,21 @@ export class DriverService {
 
   constructor(
     private db: AngularFirestore,
+    private firebaseService: FirebaseService,
     private router: Router,
     private mapsAPILoader: MapsAPILoader
   ) {}
+
+  
+  // getCurrentUserInfo(){  
+    // rturns all the users collections
+  //   this.db.collection(`users`).snapshotChanges().subscribe(data => {
+  //     data.forEach(a => {
+          // users is an array 
+  //       this.users = a.payload.doc.data()
+  //     })
+  //   });
+  // }
 
 getCurrentsUserInfo(){
         
@@ -44,8 +57,36 @@ getCurrentsUserInfo(){
     })
   }
 
+  async confirmRide(){
+    this.firebaseService.getUser().then(doc =>{
+      let ride = {
+        rideInfo: this.getRideDetails(),
+        userInfo: {
+          userUID:localStorage.getItem('uid'),
+          userExtraInfo: doc.data()
+        }
+      }
+      return new Promise<any>((resolve, reject) => { 
+        this.db
+            .collection("rides")
+            .add(ride)
+            .then(
+                res => {}, 
+                err => reject(err)
+            )
+     })
+    }).catch(err => {
+      console.log(err)
+    })
+    
+    
+  }
+
   setRideSource(source){
     this.rideSource = source;
+  }
+  setRidePrice(price){
+    this.ridePrice = price;
   }
   setRideDestination(destination){
     this.rideDestination = destination;
@@ -62,7 +103,7 @@ getCurrentsUserInfo(){
       rideDestination: this.rideDestination,
       rideNumberOfSeats: this.rideNumberOfSeats,
       rideDistance: this.rideDistance,
-      rideCost: this.rideCost,
+      ridePrice: this.ridePrice,
       rideAverageDuration: this.rideAverageDuration
     }
   }
@@ -89,8 +130,8 @@ getCurrentsUserInfo(){
             text: resp.rows[0].elements[0].duration.text,
             value: resp.rows[0].elements[0].duration.value
           }
-          console.log("/////////////////////////////");
-          console.log(this.rideDistance, this.rideAverageDuration);
+          // console.log("/////////////////////////////");
+          // console.log(this.rideDistance, this.rideAverageDuration);
         }
       })
     })

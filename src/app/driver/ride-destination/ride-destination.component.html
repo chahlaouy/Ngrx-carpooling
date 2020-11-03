@@ -15,9 +15,6 @@
     [latitude]="latitude"  [markerDraggable]="true"
     [longitude]="longitude" (dragEnd)="markerDragEnd($event)"></agm-marker>
   </agm-map>
-  <h5>Address: {{address}}</h5>
-  <div>Latitude: {{latitude}}</div>
-  <div>Longitude: {{longitude}}</div>
   <ion-fab>
     <ion-fab-button class="flex-row" (click)="nextStepNumberOfSeats()">
       <ion-icon name="arrow-forward-outline" size="large" ></ion-icon>

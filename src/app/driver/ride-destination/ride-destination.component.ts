@@ -97,7 +97,7 @@ export class RideDestinationComponent implements OnInit {
 
   nextStepNumberOfSeats() {
     this.userSer.setRideDestination({lat: this.latitude, lng: this.longitude, address: this.address});
-    this.router.navigate(['/add/ride-seats'])
+    this.router.navigate(['/driver/add/ride-seats'])
   }
 
 }

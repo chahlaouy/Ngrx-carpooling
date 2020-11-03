@@ -20,7 +20,7 @@ export class RideDateDayComponent implements OnInit {
 
   nextStepRidePrice(){
     this.userSer.setNumberOfSeats(this.numberOfSeats);
-    this.router.navigate(['add/ride-hour']);
+    this.router.navigate(['/driver/add/ride-hour']); 
   }
 
 }

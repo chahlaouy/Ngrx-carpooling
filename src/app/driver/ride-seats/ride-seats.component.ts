@@ -20,7 +20,7 @@ export class RideSeatsComponent implements OnInit {
 
   nextStepRidePrice(){
     this.userSer.setNumberOfSeats(this.numberOfSeats);
-    this.router.navigate(['add/ride-day']);
+    this.router.navigate(['/driver/add/ride-day']);
   }
 
 }
