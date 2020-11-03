@@ -18,6 +18,9 @@ export class DriverService {
   getDrivers(): Observable<any>{
     return this.db.collection("users").get()
   }
+  getRides(): Observable<any>{
+    return this.db.collection("rides").get()
+  }
 
   getDriverById(payload: string): Observable<any>{
     return this.db.doc(`users/${payload}`).get()

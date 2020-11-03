@@ -1,9 +1,0 @@
-1: Ngrx Basics!
-
-2: Actions, Reducers, Selectors
-
-3: Redux Developer Tools
-
-4: REST API Calls with Effects
-
-5: Connect Angular Router to Ngrx

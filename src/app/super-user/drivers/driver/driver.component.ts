@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Store } from '@ngrx/store'
+import { Observable } from 'rxjs';
+import *  as fromStore from '../store'
+
 @Component({
   selector: 'app-driver',
   templateUrl: './driver.component.html',
@@ -7,8 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DriverComponent implements OnInit {
 
-  constructor() { }
+  rides$: Observable<any>
 
-  ngOnInit() {}
+  constructor(
+    private store: Store
+  ) {
+    
+   }
+
+  ngOnInit() {
+    this.rides$ = this.store.select(fromStore.getRidesEntitiesAsArray)
+  }
 
 }

@@ -1,25 +1,17 @@
 import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store'
 import * as DriverReducer from './driver.reducer'
+import * as RidesReducer from './rides.reducer'
 
 export interface DriversState {
-    drivers: DriverReducer.DriverState
+    drivers: DriverReducer.DriverState,
+    rides: RidesReducer.ridesState
 }
 
 export const reducers : ActionReducerMap<DriversState> = {
-    drivers: DriverReducer.DriverReducer,
+    drivers: DriverReducer.driverReducer,
+    rides: RidesReducer.ridesReducer
 }
-
+/**
+ * Creating A Feature Selector to Get The global object in our Store which contains our two prop drivers and rides
+ */
 export const getGlobalDriversState = createFeatureSelector<DriversState>('superUserDrivers');
-
-export const getDriversState = createSelector(getGlobalDriversState, (state:DriversState) => state.drivers)
-
-export const getDriversEntities = createSelector(getDriversState, DriverReducer.getDriversData)
-
-export const getDriversDataAsArray = createSelector(getDriversEntities, (entities) => {
-    /**
-    * Convertitng the entities Object into An Array
-    */
-    return Object.keys(entities).map(id => entities[id])
-})
-export const getDriversLoaded = createSelector(getDriversState, DriverReducer.getDriversLoaded)
-export const getDriversloading = createSelector(getDriversState, DriverReducer.getDriversLoading)

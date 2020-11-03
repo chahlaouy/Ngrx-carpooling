@@ -11,18 +11,22 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./home/home.module').then( m => m.HomeModule)
   },
   {
-    path: 'admin/drivers',
-    loadChildren: () => import('./super-user/drivers/drivers.module').then( m => m.DriversModule)
+    path: 'driver',
+    loadChildren: () => import('./driver/driver.module').then( m => m.DriverModule)
   },
   {
-    path: 'admin/riders',
-    loadChildren: () => import('./super-user/riders/riders.module').then( m => m.RidersModule)
+    path: 'admin',
+    loadChildren: () => import('./super-user/super-user.module').then( m => m.SuperUserModule)
   },
-  
 ];
 
 @NgModule({

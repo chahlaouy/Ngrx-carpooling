@@ -24,7 +24,11 @@ export class DriversEffect {
                     const entities : {[id: string] : Driver} = {};
                     value.docs.forEach(doc => {
                         let index= doc.id;
-                        entities[index] = doc.data()
+                        entities[index] = {
+                            id: index,
+                            ...doc.data()
+
+                        }
                     });
                     return new driversActions.LoadDriversSuccess(entities)
                 }

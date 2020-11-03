@@ -39,21 +39,21 @@ import { reducers, effects } from './store'
 
 const routes: Routes = [
   {
-    path: 'driver',
-    component: DriverComponent
+    path: 'driver-list',
+    component: DriverListComponent
   },
   {
-    path: 'driver-add',
-    component: DriverAddComponent
-  },
-  {
-    path: 'driver-edit',
+    path: ':driverId',
     component: DriverEditComponent
   },
   {
-    path: 'driver-list',
-    component: DriverListComponent
-  }
+    path: ':driverId/driver-rides',
+    component: DriverComponent
+  },
+  {
+    path: ':driverId/driver-reviews',
+    component: DriverAddComponent
+  },
 ]
 
 @NgModule({

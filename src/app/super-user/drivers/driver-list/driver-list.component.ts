@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Store } from '@ngrx/store'
 import * as fromStore from '../store'
+
 import { Observable } from 'rxjs';
-import { DriverService } from '../services/driver.service';
 import { LoadingController } from '@ionic/angular';
 
 @Component({
@@ -27,7 +27,6 @@ export class DriverListComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new fromStore.LoadDrivers());
-
     this.drivers$ =  this.store.select(fromStore.getDriversDataAsArray)
     this.loaded$ = this.store.select(fromStore.getDriversloading)
 
@@ -50,11 +49,19 @@ export class DriverListComponent implements OnInit {
 
   async presentLoading() {
     return await this.loadingController.create({
-      message: 'ارجوك انتظر ...',
+      message: 'جار التحميل  ...',
     });
   }
   reload(){
     this.store.dispatch(new fromStore.LoadDrivers());
+    this.presentLoading().then((spinner) => {
+      spinner.present()
+      this.loaded$.subscribe(loaded => {
+        if (loaded){
+          spinner.dismiss()
+        }
+      })
+    })
     
   }
 

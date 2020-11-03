@@ -22,6 +22,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { StoreModule } from '@ngrx/store'
 import { EffectsModule } from '@ngrx/effects'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
+import {  StoreRouterConnectingModule} from '@ngrx/router-store'
+
+import { reducers, CustomSerializer } from './store'
 
 /**
  * Importing The AppComponent and The AppRouting Module
@@ -40,6 +43,20 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from 'src/environments/environment';
 
+/**
+ * Importing google maps agm core
+ */
+
+import { AgmCoreModule } from '@agm/core';
+
+
+/**
+ * Angular Forms
+ */
+
+import { FormsModule } from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms'
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -47,20 +64,27 @@ import { environment } from 'src/environments/environment';
   imports: [BrowserModule,
     IonicModule.forRoot(), 
     AppRoutingModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot(reducers),
     EffectsModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot({serializer: CustomSerializer}),
     StoreDevtoolsModule.instrument(),
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDK_H25782ntfx8P1phlMxs1KngoieEaYw',
+      libraries: ['places']
+    })
   ],
 
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
 
   bootstrap: [AppComponent]

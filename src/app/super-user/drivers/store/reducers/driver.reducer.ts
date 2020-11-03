@@ -21,7 +21,7 @@ export const initialState: DriverState = {
     error: ""
 }
 
-export function DriverReducer(
+export function driverReducer(
     state = initialState, action: driverActions.driverAction
     ): DriverState{
 

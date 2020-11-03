@@ -1,7 +1,5 @@
 import { Action } from '@ngrx/store';
 
-import { Driver } from '../../models/driver.model';
-
 export enum DriversActionTypes {
     LOAD_DRIVERS = "[Driver] load Drivers",
     LOAD_DRIVERS_SUCCESS = "[Driver] load Driver Success",

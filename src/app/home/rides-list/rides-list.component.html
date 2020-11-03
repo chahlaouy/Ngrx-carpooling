@@ -1,0 +1,86 @@
+<ion-content [fullscreen]="true">
+  
+  <div class="wrapper">
+    <div class="overlay-wrapper"></div>
+    <ion-header  class="ion-no-border">
+      <!-- [translucent]="true" -->
+      <ion-toolbar >
+        <!-- translucent -->
+        <div class="flex items-center justify-between mx-2 mt-2">
+
+          <ion-button slot="start" class="box-none" style="--background: transparent">
+            <ion-icon name="notifications-outline" class="yellow-dark"></ion-icon>
+          </ion-button>
+          <ion-buttons dir="ltr" (click)="pushHome()" >
+            <ion-icon name="chevron-back" size="large" class="yellow-dark"></ion-icon>
+          </ion-buttons>
+        </div>
+
+      </ion-toolbar>
+    </ion-header>
+    
+    <ion-item class="mt-5">
+      <ion-label>
+        <h1 class="text-2xl yellow-dark">Jeddah</h1>
+      </ion-label>
+      <ion-icon name="pin-outline" slot="start" size="small" class="yellow-dark"></ion-icon>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>
+        <h1 class="text-2xl yellow-dark">Erriadh</h1>
+      </ion-label>
+      <ion-icon name="golf-outline" slot="start" size="small" class="yellow-dark"></ion-icon>
+    </ion-item>
+
+    <ion-item class="mt-2" lines="none">
+      <ion-icon name="timer-outline" slot="start" size="small" class="yellow-dark"></ion-icon>
+      <ion-label>
+        <ul>
+          <li>
+            <h4 class="text-lg yellow-dark"> 4 أغسطس </h4>
+          </li>
+          <li><span class="text-sm yellow-dark">متوسط ​​مدة الوصول 2 ساعة</span></li>
+        </ul>
+      </ion-label>
+    </ion-item>
+
+    <ion-card class="main-card">
+      <ion-card-content class="p-0">
+        <ion-card *ngFor="let ride of rides" [class]="ride.class" class="m-0 rounded-lg">
+          <ion-card-content class="m-0 px-4 py-3">
+
+            <div class="flex justify-between items-center">
+              <ul>
+                <li class="grey-700"> {{ride.details.depart}} : <span style="color: rgb(86, 97, 252)">11:30</span></li>
+                <li class="grey-700"> {{ride.details.arrival}} : <span style="color: rgb(86, 97, 252)">14:30</span> </li>
+              </ul>
+              <div class="flex">
+                <span class="grey-700">RSA / </span>
+                <h1 class="grey-700">{{ride.price}}</h1>
+              </div>
+            </div>
+
+            <div class="flex mt-2">
+              <div style="margin-left: 10px;">
+                <img src="../../assets/person1.jpg" style="width: 50px; height: 50px; border-radius: 25px">
+              </div>
+              <div>
+                <h3 class="grey-700">{{ride.name}}</h3>
+                <span class="grey-700"> 25 </span>
+              </div>
+            </div>
+
+          </ion-card-content>
+        </ion-card>
+       
+      </ion-card-content>
+    </ion-card>
+    
+  </div>
+  <ion-fab>
+    <ion-fab-button class="flex-row">
+      <ion-icon name="options-outline" size="large"></ion-icon>
+    </ion-fab-button>
+    
+  </ion-fab>
+</ion-content>
