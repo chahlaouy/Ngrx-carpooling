@@ -4,6 +4,9 @@ import { IonicModule } from '@ionic/angular';
 
 import { RouterModule, Routes } from '@angular/router'
 
+import { FormsModule } from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms';
+import { AgmCoreModule } from '@agm/core';
 
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { DriverCarComponent } from './driver-car/driver-car.component'
@@ -119,7 +122,13 @@ const routes: Routes = [
   imports: [
     CommonModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    FormsModule,
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDK_H25782ntfx8P1phlMxs1KngoieEaYw',
+      libraries: ['places']
+    })
   ]
 })
 export class DriverModule { }

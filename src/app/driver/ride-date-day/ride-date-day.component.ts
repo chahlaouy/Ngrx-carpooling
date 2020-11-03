@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DriverService } from '../services/driver.service'
 
 @Component({
   selector: 'app-ride-date-day',
@@ -7,8 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RideDateDayComponent implements OnInit {
 
-  constructor() { }
+  numberOfSeats: any;
+  constructor(
+    private userSer: DriverService,
+    private router: Router
+  ) { }
+
 
   ngOnInit() {}
+
+  nextStepRidePrice(){
+    this.userSer.setNumberOfSeats(this.numberOfSeats);
+    this.router.navigate(['add/ride-hour']);
+  }
 
 }
