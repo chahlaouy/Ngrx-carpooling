@@ -6,71 +6,110 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class=" bg-white"> 
-  <ion-list class="pt-5">
+<ion-content [fullscreen]="true" class=" bg-white">
 
-    <ion-item>
-      <ion-icon name="pin-outline" color="tertiary" slot="start"></ion-icon>
-      <ion-label>
-        مكان المغادرة
-      </ion-label>
-    </ion-item>
-    <ion-item class="pt-2 font-bold" lines="none" dir="ltr">
-      {{rideInfo.rideSource.address}}
-    </ion-item>
-  
-    <ion-item class="pt-2" >
-      <ion-icon name="golf-outline" color="tertiary" slot="start"></ion-icon>
-      <ion-label>
-        مكان الوصول
-      </ion-label>
-    </ion-item>
-    <ion-item class="pt-2 font-bold" lines="none" dir="ltr">
-      {{rideInfo.rideDestination.address}}
-    </ion-item>
+  <ion-card color="tertiary">
+    <ion-card-header>
+      <ion-card-subtitle>
+        tunisie tunis
+        <!-- {{rideInfo.rideSource.address}} -->
+      </ion-card-subtitle>
+      <ion-card-title>
+        <ion-item>
+          <ion-icon name="pin-outline" color="light" slot="start"></ion-icon>
+          <ion-label color="light">
+            مكان المغادرة
+          </ion-label>
+        </ion-item>
+      </ion-card-title>
+    </ion-card-header>
+  </ion-card>
 
-    <ion-item class="pt-2" >
-      <ion-icon name="analytics-outline" color="tertiary" slot="start"></ion-icon>
-      <ion-label>
-        المسافة 
-      </ion-label>
-    </ion-item>
-    <ion-item class="pt-2 font-bold" lines="none" dir="ltr">
-      {{rideInfo.rideDistance.text}}
-    </ion-item>
+  <ion-card color="tertiary">
+    <ion-card-header>
+      <ion-card-subtitle>
+        tunisie tunis
+        <!-- {{rideInfo.rideDestination.address}} -->
+      </ion-card-subtitle>
+      <ion-card-title>
+        <ion-item>
+          <ion-icon name="golf-outline" color="light" slot="start"></ion-icon>
+          <ion-label color="light">
+            مكان الوصول
+          </ion-label>
+        </ion-item>
+      </ion-card-title>
+    </ion-card-header>
+  </ion-card>
 
-    <ion-item class="pt-2">
-      <ion-icon name="timer-outline" color="tertiary" slot="start"></ion-icon>
-      <ion-label>
-        متوسط ​​الوقت 
-      </ion-label>
-    </ion-item>
-    <ion-item class="pt-2 font-bold" lines="none" dir="ltr">
-      {{rideInfo.rideAverageDuration.text}}
-    </ion-item>
+  <ion-card color="tertiary">
+    <ion-card-header>
+      <ion-card-subtitle>
+        122 km
+        <!-- {{rideInfo.rideDistance.text}} -->
+      </ion-card-subtitle>
+      <ion-card-title>
+        <ion-item>
+          <ion-icon name="analytics-outline" color="light" slot="start"></ion-icon>
+          <ion-label color="light">
+            المسافة 
+          </ion-label>
+        </ion-item>
+      </ion-card-title>
+    </ion-card-header>
+  </ion-card>
 
-    <ion-item class="pt-2">
-      <ion-icon name="people-outline" color="tertiary" slot="start"></ion-icon>
-      <ion-label>
-        عدد المقاعد 
-      </ion-label>
-    </ion-item>
-    <ion-item class="pt-2 font-bold" lines="none" dir="ltr">
-      {{rideInfo.rideNumberOfSeats}}
-    </ion-item>
+  <ion-card color="tertiary">
+    <ion-card-header>
+      <ion-card-subtitle>
+        2 heures
+        <!-- {{rideInfo.rideAverageDuration.text}} -->
+      </ion-card-subtitle>
+      <ion-card-title>
+        <ion-item>
+          <ion-icon name="timer-outline" color="light" slot="start"></ion-icon>
+          <ion-label color="light">
+            متوسط ​​الوقت 
+          </ion-label>
+        </ion-item>
+      </ion-card-title>
+    </ion-card-header>
+  </ion-card>
 
-    <ion-item class="pt-2">
-      <ion-icon name="cash-outline" color="tertiary" slot="start"></ion-icon>
-      <ion-label>
-        السعر  
-      </ion-label>
-    </ion-item>
-    <ion-item class="pt-2 font-bold" lines="none" dir="ltr">
-      {{rideInfo.ridePrice}} RSA
-    </ion-item>
-    
-  </ion-list>
-  <div class="flex item-center justify-end mt-5">
+  <ion-card color="tertiary">
+    <ion-card-header>
+      <ion-card-subtitle>
+        <!-- {{rideInfo.rideNumberOfSeats}} -->
+      </ion-card-subtitle>
+      <ion-card-title>
+        <ion-item>
+          <ion-icon name="people-outline" color="light" slot="start"></ion-icon>
+          <ion-label color="light">
+            عدد المقاعد 
+          </ion-label>
+        </ion-item>
+      </ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card color="tertiary">
+    <ion-card-header>
+      <ion-card-subtitle>
+        <!-- {{rideInfo.ridePrice}} RSA -->
+      </ion-card-subtitle>
+      <ion-card-title>
+        <ion-item class="pt-2">
+          <ion-icon name="cash-outline" color="light" slot="start"></ion-icon>
+          <ion-label color="light">
+            السعر  
+          </ion-label>
+        </ion-item>
+      </ion-card-title>
+    </ion-card-header>
+   
+  </ion-card>
+
+  <div class="flex item-center justify-start mt-5">
     <ion-fab>
       <ion-fab-button class="flex-row" (click)="presentLoading()">
         تأكيد

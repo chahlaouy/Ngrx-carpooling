@@ -25,6 +25,7 @@ import { RideSeatsComponent } from './ride-seats/ride-seats.component'
 import { RideSourceComponent } from './ride-source/ride-source.component'
 import { RideDateDayComponent } from './ride-date-day/ride-date-day.component'
 import { RideDateHourComponent } from './ride-date-hour/ride-date-hour.component'
+import { ConfirmRideComponent } from './confirm-ride/confirm-ride.component'
 
 
 const routes: Routes = [ 
@@ -96,6 +97,10 @@ const routes: Routes = [
     path: 'add/ride-price',
     component: RidePriceComponent,
   },
+  {
+    path: 'add/confirm-ride',
+    component: ConfirmRideComponent,
+  },
 ];
 
 @NgModule({
@@ -117,7 +122,8 @@ const routes: Routes = [
     RideSeatsComponent,
     RideSourceComponent,
     RideDateDayComponent,
-    RideDateHourComponent
+    RideDateHourComponent,
+    ConfirmRideComponent
   ],
   imports: [
     CommonModule,

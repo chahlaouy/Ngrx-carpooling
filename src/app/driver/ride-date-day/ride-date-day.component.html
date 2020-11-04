@@ -9,12 +9,9 @@
 <ion-content [fullscreen]="true" color="light">
   <div class="flex item-center" style="height: 100%; width: 100%;">
     <ion-item style="width: 100%;">
-      <ion-label>عدد المقاعد</ion-label>
-      <ion-select placeholder="أختر" [(ngModel)]="numberOfSeats">
-        <ion-select-option value="1">1</ion-select-option>
-        <ion-select-option value="2">2</ion-select-option>
-        <ion-select-option value="3">3</ion-select-option>
-      </ion-select>
+      <ion-item>
+        <ion-datetime displayFormat="MM DD" placeholder="حدد التاريخ"></ion-datetime>
+      </ion-item>
     </ion-item>
   </div>
   <ion-fab>

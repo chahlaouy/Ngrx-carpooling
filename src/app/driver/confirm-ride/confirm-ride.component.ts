@@ -18,25 +18,25 @@ export class ConfirmRideComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.rideInfo = this.userService.getRideDetails();
+    // this.rideInfo = this.userService.getRideDetails();
   }
 
-  async presentLoading() {
-    const loading = await this.loadingController.create({
-      message: 'ارجوك انتظر ...',
-    });
-    await loading.present().then(() => {
-      this.confirmRide().then(() => {
-        loading.dismiss();
-        this.router.navigate(["/rides"])
-      })
-    })
+  // async presentLoading() {
+  //   const loading = await this.loadingController.create({
+  //     message: 'ارجوك انتظر ...',
+  //   });
+  //   await loading.present().then(() => {
+  //     this.confirmRide().then(() => {
+  //       loading.dismiss();
+  //       this.router.navigate(["/rides"])
+  //     })
+  //   })
 
-    const { role, data } = await loading.onDidDismiss();
-  }
+  //   const { role, data } = await loading.onDidDismiss();
+  // }
 
-  confirmRide(){
-    return this.userService.confirmRide()
-  }
+  // confirmRide(){
+  //   return this.userService.confirmRide()
+  // }
 
 }
