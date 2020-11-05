@@ -19,12 +19,9 @@ export class RidesEffect {
     loadRides = this.actions$.pipe(ofType(ridesActions.RidesActionTypes.LOAD_RIDES)).pipe(
         switchMap(() => {
             return this.homeService.getAllRides().pipe(
-                
                 map((value) => {
-                    console.log("1")
                     const entities : {[id: string] : any} = {};
                     value.docs.forEach(doc => {
-                        console.log(doc)
                         let index= doc.id;
                         entities[index] = {
                             id: index,

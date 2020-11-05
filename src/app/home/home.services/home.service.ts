@@ -8,86 +8,6 @@ import {  AngularFirestore } from '@angular/fire/firestore';
 })
 export class HomeService {
 
-  data = [
-    {
-      name: "محمد بن زايد",
-      price: "250",
-      class: "", 
-      expanded: true,
-      details: {
-        depart: "جدة",
-        arrival: "الرياض",
-        time: new Date()
-      }
-    },
-    {
-      name: "محمد بن زايد",
-      price: "250",
-      class: "yellow",
-      expanded: true,
-      details: {
-        depart: "جدة",
-        arrival: "الرياض",
-        time: new Date()
-      }
-    },
-    {
-      name: "محمد بن زايد",
-      price: "250",
-      class: "",
-      expanded: true,
-      details: {
-        depart: "جدة",
-        arrival: "الرياض",
-        time: new Date()
-      }
-    },
-    {
-      name: "محمد بن زايد",
-      price: "250",
-      class: "yellow",
-      expanded: true,
-      details: {
-        depart: "جدة",
-        arrival: "الرياض",
-        time: new Date()
-      }
-    },
-    
-  ]
-
-  requests=[
-    {
-      name: "john",
-      age: "30",
-      destination: "jeddah 1st ",
-      currentLocation: "jeddah 1st ",
-      nbSeats: 3
-    },
-    {
-      name: "john",
-      age: "30",
-      destination: "jeddah 1st ",
-      currentLocation: "jeddah 1st ",
-      nbSeats: 3
-    },
-    {
-      name: "john",
-      age: "30",
-      destination: "jeddah 1st ",
-      currentLocation: "jeddah 1st ",
-      nbSeats: 3
-    },
-    {
-      name: "john",
-      age: "30",
-      destination: "jeddah 1st ",
-      currentLocation: "riadh 1st ",
-      nbSeats: 3
-    }
-
-  ]
-
   constructor(
     private db: AngularFirestore
   ) { }
@@ -108,9 +28,4 @@ export class HomeService {
     
   }
 
-  
-
-  getRequests(){
-    return this.requests
-  }
 }

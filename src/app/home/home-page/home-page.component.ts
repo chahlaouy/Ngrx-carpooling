@@ -6,7 +6,7 @@ import { HomeService } from '../home.services/home.service'
 import { Store } from '@ngrx/store'
 import * as fromStore from '../store'
 @Component({
-  selector: 'app-home-page',
+  selector: 'app-home-page', 
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
 })

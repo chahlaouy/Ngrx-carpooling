@@ -1,5 +1,9 @@
 <ion-content [fullscreen]="true">
-  
+  <ion-fab vertical="top" horizontal="end" slot="fixed" (click)="reload()">
+    <ion-fab-button>
+      <ion-icon name="refresh-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   <div class="wrapper">
     <div class="overlay-wrapper"></div>
     <ion-header  class="ion-no-border">
@@ -46,17 +50,23 @@
 
     <ion-card class="main-card">
       <ion-card-content class="p-0">
-        <ion-card *ngFor="let ride of rides" [class]="ride.class" class="m-0 rounded-lg">
+        <ion-card *ngFor="let ride of rides$ | async" class="m-0 rounded-lg">
           <ion-card-content class="m-0 px-4 py-3">
 
             <div class="flex justify-between items-center">
               <ul>
-                <li class="grey-700"> {{ride.details.depart}} : <span style="color: rgb(86, 97, 252)">11:30</span></li>
-                <li class="grey-700"> {{ride.details.arrival}} : <span style="color: rgb(86, 97, 252)">14:30</span> </li>
+                <li class="grey-700"> 
+                  {{ride.rideInfo.rideSource.address}} :
+                   <span style="color: rgb(86, 97, 252)">11:30</span></li>
+                <li class="grey-700">
+                   {{ride.rideInfo.rideDestination.address}} : 
+                   <span style="color: rgb(86, 97, 252)">14:30</span> </li>
               </ul>
               <div class="flex">
                 <span class="grey-700">RSA / </span>
-                <h1 class="grey-700">{{ride.price}}</h1>
+                <h1 class="grey-700">
+                  {{ride.rideInfo.ridePrice}}
+                </h1>
               </div>
             </div>
 
@@ -65,8 +75,12 @@
                 <img src="../../assets/avatar.png" style="width: 50px; height: 50px; border-radius: 25px">
               </div>
               <div>
-                <h3 class="grey-700">{{ride.name}}</h3>
-                <span class="grey-700"> 25 </span>
+                <h3 class="grey-700">
+                  {{ride.userInfo.userExtraInfo.username}}
+                </h3>
+                <span class="grey-700">
+                  {{ride.userInfo.userExtraInfo.age}}
+                </span>
               </div>
             </div>
 
