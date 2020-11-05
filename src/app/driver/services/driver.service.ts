@@ -13,14 +13,24 @@ export class DriverService {
   private rideDestination: any;
   private rideNumberOfSeats: any;
   private ridePrice: any;
-  private rideDistance: {
-    text: any,
-    value: any
+  private rideDistance = {
+    text: '',
+    value: 0
   };
-  private rideAverageDuration: {
-    text: any,
-    value: any
+  private rideAverageDuration = {
+    text: '',
+    value: 0
   };
+  private rideDate = {
+    rideDayAndMonth: {
+      day: '',
+      month: ''
+    },
+    rideHour: {
+      hour: '',
+      minute: ''
+    }
+  }
 
   constructor(
     private db: AngularFirestore,
@@ -30,35 +40,34 @@ export class DriverService {
   ) {}
 
   
-  // getCurrentUserInfo(){  
-    // rturns all the users collections
-  //   this.db.collection(`users`).snapshotChanges().subscribe(data => {
-  //     data.forEach(a => {
-          // users is an array 
-  //       this.users = a.payload.doc.data()
-  //     })
-  //   });
-  // }
+  setRideDayAndMonth(date){
+    this.rideDate.rideDayAndMonth.day = date.day.text
+    this.rideDate.rideDayAndMonth.month = date.month.text
+  }
+  setRideHour(dateInHour){
+    this.rideDate.rideHour.hour = dateInHour.hour.text
+    this.rideDate.rideHour.minute = dateInHour.minute.text
+  }
 
-getCurrentsUserInfo(){
-        
-  return this.db.doc(`users/${localStorage.getItem('uid')}`).get()
- }
+  getCurrentsUserInfo(){
+          
+    return this.db.doc(`users/${localStorage.getItem('uid')}`).get()
+  }
 
- addCar(car){
+  addCar(car){
     return this.db.doc(`users/${localStorage.getItem('uid')}`).update({
       userCar: car
     })
   }
 
- addFavorite(favorite){
+  addFavorite(favorite){
     return this.db.doc(`users/${localStorage.getItem('uid')}`).update({
       userFavorite: favorite
     })
   }
 
   async confirmRide(){
-    this.firebaseService.getUser().then(doc =>{
+    this.firebaseService.getUser().then(doc =>{ 
       let ride = {
         rideInfo: this.getRideDetails(),
         userInfo: {
@@ -104,7 +113,8 @@ getCurrentsUserInfo(){
       rideNumberOfSeats: this.rideNumberOfSeats,
       rideDistance: this.rideDistance,
       ridePrice: this.ridePrice,
-      rideAverageDuration: this.rideAverageDuration
+      rideAverageDuration: this.rideAverageDuration,
+      rideDate: this.rideDate
     }
   }
 

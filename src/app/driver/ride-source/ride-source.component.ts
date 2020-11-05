@@ -13,11 +13,13 @@ export class RideSourceComponent implements OnInit {
   @ViewChild('search')
   public searchElementRef: ElementRef;
 
+
+  error = null;
   title: string = 'AGM project';
   latitude: number;
   longitude: number;
   zoom:number;
-  address: string;
+  address: string = null;
   private geoCoder;
 
 
@@ -52,7 +54,7 @@ export class RideSourceComponent implements OnInit {
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
           this.address = place.formatted_address;
-          console.log(this.address)
+          this.error = "error" 
           this.zoom = 12;
         });
       });
@@ -78,8 +80,6 @@ export class RideSourceComponent implements OnInit {
 
   getAddress(latitude, longitude) {
     this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
-      // console.log(results);
-      // console.log(status);
       if (status === 'OK') {
         if (results[0]) {
           this.zoom = 12;
@@ -96,6 +96,9 @@ export class RideSourceComponent implements OnInit {
 
 
   nextStepDestination(){
+    if (this.address == null){
+      return
+    }
     this.userSer.setRideSource({lat: this.latitude, lng: this.longitude, address: this.address});
     this.router.navigate(['/driver/add/ride-destination'])
   }

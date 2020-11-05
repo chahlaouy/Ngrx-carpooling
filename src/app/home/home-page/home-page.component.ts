@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 
 import { HomeService } from '../home.services/home.service'
 
+import { Store } from '@ngrx/store'
+import * as fromStore from '../store'
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -10,7 +12,7 @@ import { HomeService } from '../home.services/home.service'
 })
 export class HomePageComponent implements OnInit {
 
-  rides = [];
+  rides = [1,2,3,4]
   sliderConfig = {
     spaceBetween: 10,
     centeredSlides: false,
@@ -20,12 +22,12 @@ export class HomePageComponent implements OnInit {
   currentUser= null;
 
   constructor(
-    private homeService:HomeService,
     private router: Router,
+    private store: Store
     ) {}
 
   ngOnInit(){
-    this.rides = this.homeService.getrides();
+    this.store.dispatch(new fromStore.LoadRides());
   }
 
 

@@ -9,6 +9,7 @@ import { DriverService } from '../services/driver.service'
 })
 export class RideSeatsComponent implements OnInit {
 
+  error: any;
   numberOfSeats: any;
   constructor(
     private userSer: DriverService,
@@ -19,6 +20,10 @@ export class RideSeatsComponent implements OnInit {
   ngOnInit() {}
 
   nextStepRidePrice(){
+    if(!this.numberOfSeats){
+      this.error = "الرجاء إدخال عدد المقاعد"
+      return
+    }
     this.userSer.setNumberOfSeats(this.numberOfSeats);
     this.router.navigate(['/driver/add/ride-day']);
   }

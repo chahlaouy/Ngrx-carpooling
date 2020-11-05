@@ -9,18 +9,39 @@ import { DriverService } from '../services/driver.service'
 export class RideDateHourComponent implements OnInit {
 
   
-  numberOfSeats: any;
+  hour = null
+  error = null
+  customPickerOptions: any;
+
   constructor(
     private userSer: DriverService,
-    private router: Router
-  ) { }
+    private router: Router,
+  ) {
+    this.customPickerOptions = {
+      buttons: [{
+        text: 'Save',
+        handler: (hour) => {
+          this.hour = hour 
+        }
+      }, {
+        text: 'cancel',
+        handler: () => {
+          console.log('Clicked Log. Do not Dismiss.');
+          return false;
+        }
+      }]
+    }
+  }
 
-
-  ngOnInit() {} 
+  ngOnInit() {}
 
   nextStepRidePrice(){
-    this.userSer.setNumberOfSeats(this.numberOfSeats);
-    this.router.navigate(['/driver/add/ride-price']);
+    if (this.hour == null){
+      this.error = "يرجى إدخال تاريخ"
+      return
+    }
+    this.userSer.setRideHour(this.hour);
+    this.router.navigate(['/driver/add/ride-price']); 
   }
 
 }

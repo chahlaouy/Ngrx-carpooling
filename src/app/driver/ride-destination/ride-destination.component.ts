@@ -13,6 +13,7 @@ export class RideDestinationComponent implements OnInit {
   @ViewChild('search')
   public searchElementRef: ElementRef;
 
+  error = null
   title: string = 'AGM project';
   latitude: number;
   longitude: number;
@@ -54,6 +55,7 @@ export class RideDestinationComponent implements OnInit {
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
           this.address = place.formatted_address;
+          this.error = "error"
           this.zoom = 12;
         });
       });
@@ -96,6 +98,9 @@ export class RideDestinationComponent implements OnInit {
   }
 
   nextStepNumberOfSeats() {
+    if (this.address == null){
+      return
+    }
     this.userSer.setRideDestination({lat: this.latitude, lng: this.longitude, address: this.address});
     this.router.navigate(['/driver/add/ride-seats'])
   }

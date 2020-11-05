@@ -1,12 +1,6 @@
 import { Driver } from '../../models/driver.model'
 import * as driverActions from '../actions/driver.actions'
 
-// import * as fromRoot from '../../../../app.state'
-
-// export interface AppState extends fromRoot.AppState {
-//     drivers: DriverState
-// }
-
 export interface DriverState{
     entities: { [id: string] : Driver},
     loading: boolean,

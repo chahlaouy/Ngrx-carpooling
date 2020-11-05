@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 
+import {  AngularFirestore } from '@angular/fire/firestore';
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -84,34 +87,28 @@ export class HomeService {
     }
 
   ]
-  // currentUser = {
-  //   name: "",
-  //   email: "",
-  //   phone: "",
-  //   age: "",
-  //   image: "",
-  //   confirmPassword: "",
-  //   gender: "",
-  //   picture: ""
-  // }
-  currentUser = null;
 
-  constructor() { }
+  constructor(
+    private db: AngularFirestore
+  ) { }
 
-  getrides(){
-    return this.data;
+  getAllRides(){
+    return this.db.collection("rides").get()
   }
 
-  logIn(user){
-    this.currentUser = user
-  }
-  logOut(user){
-    this.currentUser = null
+  getRidesByDate(dateBegin: any, dateEnd: any){
+    
   }
 
-  getCurrentUser(){
-    return this.currentUser
+  getRidesByFavorite(favorite: any){
+    
   }
+
+  getRidesByLocation(source: any, destination: any){
+    
+  }
+
+  
 
   getRequests(){
     return this.requests
