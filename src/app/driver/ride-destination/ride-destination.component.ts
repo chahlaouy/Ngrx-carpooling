@@ -17,6 +17,9 @@ export class RideDestinationComponent implements OnInit {
   title: string = 'AGM project';
   latitude: number;
   longitude: number;
+  adminAreaLevel1: string;
+  adminAreaLevel2: string;
+  locality: string;
   zoom: number;
   address: string;
   private geoCoder;
@@ -33,7 +36,7 @@ export class RideDestinationComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-
+ 
     //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
@@ -55,6 +58,20 @@ export class RideDestinationComponent implements OnInit {
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
           this.address = place.formatted_address;
+          place.address_components.forEach(item => {
+            // if ( item.types.indexOf("administrative_area_level_2") != -1){
+            //   this.adminAreaLevel2 = item.long_name
+            // }
+            if ( item.types.indexOf("locality") != -1){
+              this.locality = item.long_name
+            }
+            if ( item.types.indexOf("administrative_area_level_1") != -1){
+              this.adminAreaLevel1 = item.long_name
+            }
+          })
+          // if(!this.adminAreaLevel2){
+          //   this.adminAreaLevel2 = ''
+          // }
           this.error = "error"
           this.zoom = 12;
         });
@@ -98,10 +115,10 @@ export class RideDestinationComponent implements OnInit {
   }
 
   nextStepNumberOfSeats() {
-    if (this.address == null){
+    if (this.locality == null){
       return
     }
-    this.userSer.setRideDestination({lat: this.latitude, lng: this.longitude, address: this.address});
+    this.userSer.setRideDestination({adminAreaLevel1: this.adminAreaLevel1, locality: this.locality, lat: this.latitude, lng: this.longitude});
     this.router.navigate(['/driver/add/ride-seats'])
   }
 

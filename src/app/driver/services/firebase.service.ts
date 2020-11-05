@@ -17,7 +17,7 @@ export class FirebaseService {
   newDriver: any;
 
   currentUser: any;
-
+ 
   private eventAuthError = new BehaviorSubject<string>("");
   eventAuthError$ = this.eventAuthError.asObservable();
 
@@ -54,7 +54,7 @@ export class FirebaseService {
             this.router.navigate(["/user/dashboard"])
           })
       })
-      .catch(error => {
+      .catch(error => { 
         console.log(error)
         this.eventAuthError.next(error)
       })

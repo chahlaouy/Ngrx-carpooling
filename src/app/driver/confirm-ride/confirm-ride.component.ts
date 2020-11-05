@@ -10,7 +10,8 @@ import { LoadingController } from '@ionic/angular';
 })
 export class ConfirmRideComponent implements OnInit {
 
-  rideInfo: any
+  errorConfirmingRide: any
+  rideInfo: any 
   constructor(
     private router: Router,
     private userService: DriverService,
@@ -18,20 +19,32 @@ export class ConfirmRideComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.rideInfo = this.userService.getRideDetails(); 
+    this.rideInfo = this.userService.getRideDetails();
+    
   }
 
   async presentLoading() {
-    const loading = await this.loadingController.create({
+    const loading = await this.loadingController.create({ 
       message: 'ارجوك انتظر ...',
-      duration: 5000
     });
-    await loading.present().then(() => {
-      this.confirmRide().then(() => {
-        loading.dismiss();
-        this.router.navigate(["/home"])
+    await loading.present()
+
+    this.confirmRide().then(() => {
+      this.userService.errorConfirmingRide$.subscribe(err => {
+        this.errorConfirmingRide = err
+        if (this.errorConfirmingRide == 'error'){
+          loading.dismiss();
+          console.log(this.errorConfirmingRide)
+          console.log("nnnn passare")
+        }
+        if (this.errorConfirmingRide == 'success'){
+          loading.dismiss();
+          console.log(this.errorConfirmingRide)
+          console.log("passare")
+        }
       })
     })
+   
 
     const { role, data } = await loading.onDidDismiss();
   }

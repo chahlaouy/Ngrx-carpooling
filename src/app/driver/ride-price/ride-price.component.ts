@@ -34,8 +34,8 @@ export class RidePriceComponent implements OnInit {
   ngOnInit() {
     console.log(this.userSer.getRideDetails());
     this.getPermittedPrices();
-    this.rideSource = this.userSer.getRideDetails().rideSource.address;
-    this.rideDestination = this.userSer.getRideDetails().rideDestination.address;
+    this.rideSource = this.userSer.getRideDetails().rideSource.adminAreaLevel1 + ', ' +this.userSer.getRideDetails().rideSource.locality;
+    this.rideDestination = this.userSer.getRideDetails().rideSource.adminAreaLevel1 + ', ' + this.userSer.getRideDetails().rideDestination.locality;
     this.rideAverageDuration = this.userSer.getRideDetails().rideAverageDuration.text;
     this.rideDistanceText = this.userSer.getRideDetails().rideDistance.text
   }

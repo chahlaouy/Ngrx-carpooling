@@ -1,11 +1,11 @@
 <ion-content [fullscreen]="true">
-  <ion-fab vertical="top" horizontal="end" slot="fixed" (click)="reload()">
+  <!-- <ion-fab vertical="top" horizontal="end" slot="fixed" (click)="reload()">
     <ion-fab-button>
       <ion-icon name="refresh-outline"></ion-icon>
     </ion-fab-button>
-  </ion-fab>
+  </ion-fab> -->
   <div class="wrapper">
-    <div class="overlay-wrapper"></div>
+    <!-- <div class="overlay-wrapper"></div> -->
     <ion-header  class="ion-no-border">
       <!-- [translucent]="true" -->
       <ion-toolbar >
@@ -15,7 +15,7 @@
           <ion-button slot="start" class="box-none" style="--background: transparent">
             <ion-icon name="notifications-outline" class="yellow-dark"></ion-icon>
           </ion-button>
-          <ion-buttons dir="ltr" (click)="pushHome()" >
+          <ion-buttons dir="ltr" (click)="pushHome()">
             <ion-icon name="chevron-back" size="large" class="yellow-dark"></ion-icon>
           </ion-buttons>
         </div>
@@ -56,10 +56,10 @@
             <div class="flex justify-between items-center">
               <ul>
                 <li class="grey-700"> 
-                  {{ride.rideInfo.rideSource.address}} :
+                  {{ride.rideInfo.rideSource.locality}}, {{ride.rideInfo.rideSource.adminAreaLevel1}} :
                    <span style="color: rgb(86, 97, 252)">11:30</span></li>
                 <li class="grey-700">
-                   {{ride.rideInfo.rideDestination.address}} : 
+                   {{ride.rideInfo.rideDestination.locality}}, {{ride.rideInfo.rideDestination.adminAreaLevel1}} : 
                    <span style="color: rgb(86, 97, 252)">14:30</span> </li>
               </ul>
               <div class="flex">

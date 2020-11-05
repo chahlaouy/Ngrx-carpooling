@@ -18,6 +18,9 @@ export class RideSourceComponent implements OnInit {
   title: string = 'AGM project';
   latitude: number;
   longitude: number;
+  adminAreaLevel1: string;
+  adminAreaLevel2: string;
+  locality: string;
   zoom:number;
   address: string = null;
   private geoCoder;
@@ -50,10 +53,21 @@ export class RideSourceComponent implements OnInit {
             return;
           }
 
-          //set latitude, longitude and zoom
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
           this.address = place.formatted_address;
+          place.address_components.forEach(item => {
+            // console.log(item.types.indexOf("administrative_area_level_2"))
+            // if ( item.types.indexOf("administrative_area_level_2") != -1){
+            //   this.adminAreaLevel2 = item.long_name
+            // }
+            if ( item.types.indexOf("locality") != -1){
+              this.locality = item.long_name
+            }
+            if ( item.types.indexOf("administrative_area_level_1") != -1){
+              this.adminAreaLevel1 = item.long_name
+            }
+          })
           this.error = "error" 
           this.zoom = 12;
         });
@@ -96,10 +110,10 @@ export class RideSourceComponent implements OnInit {
 
 
   nextStepDestination(){
-    if (this.address == null){
+    if (this.locality == null){
       return
     }
-    this.userSer.setRideSource({lat: this.latitude, lng: this.longitude, address: this.address});
+    this.userSer.setRideSource({adminAreaLevel1: this.adminAreaLevel1, locality: this.locality, lat: this.latitude, lng: this.longitude});
     this.router.navigate(['/driver/add/ride-destination'])
   }
 

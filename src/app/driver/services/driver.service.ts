@@ -4,11 +4,15 @@ import { Router } from '@angular/router';
 import { MapsAPILoader } from '@agm/core';
 
 import { FirebaseService } from './firebase.service'
+import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class DriverService {
   
+  private errorConfirmingRide= new BehaviorSubject<string>("");
+  errorConfirmingRide$ = this.errorConfirmingRide.asObservable();
+
   private rideSource: any;
   private rideDestination: any;
   private rideNumberOfSeats: any;
@@ -60,10 +64,10 @@ export class DriverService {
     })
   }
 
-  addFavorite(favorite){
+  addFavorite(favorite){ 
     return this.db.doc(`users/${localStorage.getItem('uid')}`).update({
       userFavorite: favorite
-    })
+    }) 
   }
 
   async confirmRide(){
@@ -80,12 +84,14 @@ export class DriverService {
             .collection("rides")
             .add(ride)
             .then(
-                res => {}, 
+                res => {
+                  this.errorConfirmingRide.next('success')
+                }, 
                 err => reject(err)
             )
      })
     }).catch(err => {
-      console.log(err)
+      this.errorConfirmingRide.next('error')
     })
     
     
