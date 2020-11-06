@@ -8,6 +8,46 @@
 
 <ion-content [fullscreen]="true" class=" bg-white">
 
+  
+  
+  <ion-card color="danger" *ngIf="errorConfirmingRide == 'error'">
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-icon name="close-outline" color="light"></ion-icon>
+      </ion-card-subtitle>
+      <ion-card-title>
+        <ion-item>
+          <ion-label color="light">
+             هناك خطأ يرجى المحاولة مرة أخرى
+          </ion-label>
+        </ion-item>
+        <ion-item [routerLink]="['/driver/add/ride-source']" lines="none">
+          <ion-button color="light">
+            أعد المحاولة
+          </ion-button>
+        </ion-item>
+      </ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card color="success" *ngIf="errorConfirmingRide == 'success'">
+    <ion-card-header>
+      <ion-card-title>
+        <ion-item>
+          <ion-icon name="checkmark-done-outline" color="light" slot="start" size="large"></ion-icon>
+          <ion-label color="light">
+            تم تسجيل البيانات بنجاح
+          </ion-label>
+        </ion-item>
+        <ion-item [routerLink]="['/driver/dashboard']">
+          <ion-label color="light">
+            الصفحة الريسية
+          </ion-label>
+        </ion-item>
+      </ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
   <ion-card color="tertiary">
     <ion-card-header>
       <ion-card-subtitle>
@@ -105,9 +145,9 @@
    
   </ion-card>
 
-  <div class="flex item-center justify-start mt-5">
+  <div class="flex item-center justify-start">
     <ion-fab>
-      <ion-fab-button class="flex-row" (click)="presentLoading()">
+      <ion-fab-button class="flex-row mt-5 mr-2" (click)="presentLoading()">
         تأكيد
       </ion-fab-button> 
     </ion-fab>

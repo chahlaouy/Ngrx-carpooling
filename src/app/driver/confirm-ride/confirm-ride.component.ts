@@ -10,8 +10,9 @@ import { LoadingController } from '@ionic/angular';
 })
 export class ConfirmRideComponent implements OnInit {
 
-  errorConfirmingRide: any
-  rideInfo: any 
+  unsub$: any;
+  errorConfirmingRide: any;
+  rideInfo: any;
   constructor(
     private router: Router,
     private userService: DriverService,
@@ -30,17 +31,13 @@ export class ConfirmRideComponent implements OnInit {
     await loading.present()
 
     this.confirmRide().then(() => {
-      this.userService.errorConfirmingRide$.subscribe(err => {
+      this.unsub$ = this.userService.errorConfirmingRide$.subscribe(err => {
         this.errorConfirmingRide = err
         if (this.errorConfirmingRide == 'error'){
-          loading.dismiss();
-          console.log(this.errorConfirmingRide)
-          console.log("nnnn passare")
+          loading.dismiss()
         }
         if (this.errorConfirmingRide == 'success'){
           loading.dismiss();
-          console.log(this.errorConfirmingRide)
-          console.log("passare")
         }
       })
     })
@@ -53,4 +50,8 @@ export class ConfirmRideComponent implements OnInit {
     return this.userService.confirmRide()
   }
 
+  ngOnDestroy(): void {
+    this.unsub$.unsubscribe();
+    
+  }
 }

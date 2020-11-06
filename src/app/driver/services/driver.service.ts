@@ -111,7 +111,7 @@ export class DriverService {
   setNumberOfSeats(seats){
     this.rideNumberOfSeats = seats;
   }
-
+  
   getRideDetails(){
     return {
       rideSource: this.rideSource,

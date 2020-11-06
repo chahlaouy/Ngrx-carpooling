@@ -27,5 +27,5 @@ export class HomeService {
   getRidesByLocation(source: any, destination: any){
     
   }
-
+  
 }
