@@ -286,6 +286,16 @@
   font-size: 3rem !important
 }
 
+.text-center{
+  text-align: center;
+}
+.text-left{
+  text-align: left;
+}
+.text-right{
+  text-align: right;
+}
+
 .mx-1{
   margin-right: .5rem  !important;
   margin-left: .5rem  !important;
@@ -628,6 +638,9 @@ ul{
 }
 .rounded-xl{
   border-radius: 3rem;
+}
+.rounded-full{
+  border-radius: 100%;
 }
 
 .p-0{

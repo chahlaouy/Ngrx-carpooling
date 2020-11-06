@@ -8,6 +8,7 @@ import { RouterModule, Routes } from '@angular/router'
 
 import { HomePageComponent } from './home-page/home-page.component'
 import { RidesListComponent } from './rides-list/rides-list.component'
+import { RideEditComponent } from './ride-edit/ride-edit.component'
 
 import { StoreModule } from '@ngrx/store'
 import { EffectsModule } from '@ngrx/effects'
@@ -22,19 +23,24 @@ const routes: Routes = [
     path: 'rides-list',
     component: RidesListComponent
   },
+  {
+    path: 'rides-list/:rideId',
+    component: RideEditComponent
+  },
 ]
 @NgModule({
   declarations: [
     HomePageComponent,
-    RidesListComponent
+    RidesListComponent,
+    RideEditComponent
   ],
   imports: [
     CommonModule,
+    IonicModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature("homerides", reducers),
     EffectsModule.forFeature(effects),
     HttpClientModule,
-    IonicModule,
   ]
 })
 export class HomeModule { }

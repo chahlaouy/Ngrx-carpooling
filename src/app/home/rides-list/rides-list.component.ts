@@ -11,7 +11,7 @@ import  { HomeService } from '../home.services/home.service'
 
 @Component({
   selector: 'app-rides-list',
-  templateUrl: './rides-list.component.html',
+  templateUrl: './rides-list.component.html', 
   styleUrls: ['./rides-list.component.scss'],
 })
 export class RidesListComponent implements OnInit {
@@ -27,11 +27,12 @@ export class RidesListComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.store.dispatch(new fromStore.LoadRides());
     this.rides$ =  this.store.select(fromStore.getRidesEntitiesAsArray)
     this.loaded$ = this.store.select(fromStore.getRidesLoading)
     // this.presentLoading().then((spinner) => {
     //   spinner.present()
-    //   this.loaded$.subscribe(loaded => {
+    //   this.loaded$.subscribe(loaded => { 
     //     if (loaded){
     //       spinner.dismiss()
     //     }

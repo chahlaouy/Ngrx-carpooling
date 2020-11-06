@@ -6,7 +6,7 @@ import { take } from 'rxjs/operators';
 import * as fromStore from '../store'
 
 @Component({
-  selector: 'app-driver-edit',
+  selector: 'app-driver-edit', 
   templateUrl: './driver-edit.component.html',
   styleUrls: ['./driver-edit.component.scss'],
 })
@@ -29,9 +29,6 @@ export class DriverEditComponent implements OnInit {
       }
     )
   }
-  ngOnDestroy(): void {
-    this.driver$.subscribe
-    
-  }
+  ngOnDestroy(): void {}
 
 }
