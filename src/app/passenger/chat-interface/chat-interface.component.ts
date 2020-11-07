@@ -11,13 +11,15 @@ export class ChatInterfaceComponent implements OnInit {
 
   uid: any;
   message: any;
+  allMessages: any;
   constructor(
     private chatServ: ChatService
   ) { }
 
   ngOnInit() {
-    this.chatServ.returnObservable().subscribe(data => {
-      console.log(data)
+    this.chatServ.getAllMessages().subscribe(data => {
+      this.allMessages = data
+      console.log(this.allMessages)
     })
     this.uid = localStorage.getItem('uid')
   }

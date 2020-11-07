@@ -17,7 +17,7 @@ export class ChatService {
     this.db.list(`${chatID}/messages`).push({message: message, senderName: 'john full', timestap: new Date().getTime()})
   }
 
-  returnObservable(){
+  getAllMessages(){
     return this.db.list('C6Iy0BzS5Ecd4bHI4k8wXPfobAx2C6Iy0BzS5Ecd4bHI4k8wXPfobAx2/messages').valueChanges()
   }
 }

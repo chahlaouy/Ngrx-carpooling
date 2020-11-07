@@ -27,3 +27,19 @@ div.outer-box{
         }
     }
 }
+.received-message, .sended-message{
+    padding: 20px;
+    border-radius: 15px;
+    margin: 10px 0;
+    width: fit-content;
+    color: white;
+}
+.received-message{
+    border-bottom-left-radius: 0px;
+    background: #ff6176;
+}
+.sended-message{
+    border-bottom-right-radius: 0px;
+    background: #3932c0;
+
+}

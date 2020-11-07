@@ -7,16 +7,25 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="bg-white">
-  <div>
-
+  <div *ngFor="let message of allMessages" class=" mb-5">
+    <div class="flex item-center justify-end">
+      <div class="received-message">
+        {{message.message}}
+      </div>
+    </div>
+    <div class="flex item-center justify-start">
+      <div class="sended-message">
+        {{message.message}}
+      </div>
+    </div>
   </div>
   <div class="outer-box">
     <div class="inner-box">
 
-      <label>
+      <label (click)="send()">
         إرسال
       </label>
-      <input (click)="send()" [(ngModel)]="message" placeholder="اكتب رسالة">
+      <input [(ngModel)]="message" placeholder="اكتب رسالة">
     </div>
   </div>
 </ion-content> 
