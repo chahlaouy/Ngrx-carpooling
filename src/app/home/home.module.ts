@@ -9,10 +9,20 @@ import { RouterModule, Routes } from '@angular/router'
 import { HomePageComponent } from './home-page/home-page.component'
 import { RidesListComponent } from './rides-list/rides-list.component'
 import { RideEditComponent } from './ride-edit/ride-edit.component'
+import { FilterHomeComponent } from './filter-home/filter-home.component'
+import { FilterSourceComponent } from './filter-source/filter-source.component'
+import { FilterDestinationComponent } from './filter-destination/filter-destination.component'
+import { FilterDateComponent } from './filter-date/filter-date.component'
+import { FilterFavoriteComponent } from './filter-favorite/filter-favorite.component'
 
 import { StoreModule } from '@ngrx/store'
 import { EffectsModule } from '@ngrx/effects'
 import { reducers, effects } from './store'
+
+import { AgmCoreModule } from '@agm/core';
+
+import { FormsModule } from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -27,20 +37,51 @@ const routes: Routes = [
     path: 'rides-list/:rideId',
     component: RideEditComponent
   },
+  {
+    path: 'filter/home',
+    component: FilterHomeComponent
+  },
+  {
+    path: 'filter/source',
+    component: FilterSourceComponent
+  },
+  {
+    path: 'filter/destination',
+    component: FilterDestinationComponent
+  },
+  {
+    path: 'filter/date',
+    component: FilterDateComponent
+  },
+  {
+    path: 'filter/favorite',
+    component: FilterFavoriteComponent
+  },
 ]
 @NgModule({
   declarations: [
     HomePageComponent,
     RidesListComponent,
-    RideEditComponent
+    RideEditComponent,
+    FilterFavoriteComponent,
+    FilterDateComponent,
+    FilterDestinationComponent,
+    FilterSourceComponent,
+    FilterHomeComponent
   ],
   imports: [
-    CommonModule,
+    CommonModule, 
     IonicModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature("homerides", reducers),
     EffectsModule.forFeature(effects),
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDK_H25782ntfx8P1phlMxs1KngoieEaYw',
+      libraries: ['places']
+    })
   ]
 })
 export class HomeModule { }

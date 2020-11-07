@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router'
 
 import { FormsModule } from '@angular/forms'
 import { ReactiveFormsModule } from '@angular/forms';
-import { AgmCoreModule } from '@agm/core';
+import { AgmCoreModule } from '@agm/core'; 
 
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { DriverCarComponent } from './driver-car/driver-car.component'

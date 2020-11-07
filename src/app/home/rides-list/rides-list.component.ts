@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -7,7 +7,7 @@ import * as fromStore from '../store'
 
 import { LoadingController } from '@ionic/angular';
 
-import  { HomeService } from '../home.services/home.service'
+import  { FilterService } from '../home.services/filter.service'
 
 @Component({
   selector: 'app-rides-list',
@@ -16,11 +16,12 @@ import  { HomeService } from '../home.services/home.service'
 })
 export class RidesListComponent implements OnInit {
 
-  rides$: Observable<any>; 
+  rides: any; 
   loaded$: Observable<any>;
 
+  ridesFilter: any;
   constructor(
-    private homeService: HomeService,
+    private filterSer: FilterService,
     private router: Router,
     private store: Store,
     private loadingController: LoadingController
@@ -28,7 +29,9 @@ export class RidesListComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new fromStore.LoadRides());
-    this.rides$ =  this.store.select(fromStore.getRidesEntitiesAsArray)
+    this.store.select(fromStore.getRidesEntitiesAsArray).subscribe(data => {
+      this.rides = data
+    })
     this.loaded$ = this.store.select(fromStore.getRidesLoading)
     // this.presentLoading().then((spinner) => {
     //   spinner.present()
@@ -61,6 +64,32 @@ export class RidesListComponent implements OnInit {
     })
     
   }
+  ionViewWillEnter() {
+    console.log('entered')
+    this.ridesFilter = this.filterSer.getFilterObject();
+    console.log(this.filterSer)
+    this.store.dispatch(new fromStore.LoadRides());
+    this.store.select(fromStore.getRidesEntitiesAsArray).subscribe(data => {
+      if (this.ridesFilter){
+        console.log('filtered')
+        this.rides = data.filter(item => {
+          return this.ridesFilter.filterDestination.adminAreaLevel1 == item.rideInfo.rideDestination.adminAreaLevel1 && this.ridesFilter.filterSource.adminAreaLevel1 == item.rideInfo.rideSource.adminAreaLevel1
+        })
+      }
+      else {
+        console.log('not filtered')
+        this.rides = data
+      }
+    })
+  }
+  // ionViewWillLeave() {
+  //   this.ngOnDestroy();
+    
+  // }
 
+  // @HostListener('unload')
+  // ngOnDestroy() {
+  //   console.log('destroyed')
+  // }
   
 }
