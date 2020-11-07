@@ -20,6 +20,10 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomeModule)
   },
   {
+    path: 'passenger', 
+    loadChildren: () => import('./passenger/passenger.module').then( m => m.PassengerModule)
+  },
+  {
     path: 'driver',
     loadChildren: () => import('./driver/driver.module').then( m => m.DriverModule)
   },

@@ -1,0 +1,22 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-title class="grey-100">
+      الدردشة 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg-white">
+  <div>
+
+  </div>
+  <div class="outer-box">
+    <div class="inner-box">
+
+      <label>
+        إرسال
+      </label>
+      <input (click)="send()" [(ngModel)]="message" placeholder="اكتب رسالة">
+    </div>
+  </div>
+</ion-content> 

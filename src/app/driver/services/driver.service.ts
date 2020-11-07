@@ -40,8 +40,10 @@ export class DriverService {
     private db: AngularFirestore,
     private firebaseService: FirebaseService,
     private router: Router,
-    private mapsAPILoader: MapsAPILoader
-  ) {}
+    private mapsAPILoader: MapsAPILoader,
+  ) {
+
+  }
 
   
   setRideDayAndMonth(date){

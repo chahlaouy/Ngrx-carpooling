@@ -1,0 +1,29 @@
+ion-toolbar{
+    background: #3932c0;
+}
+
+input{
+    border: none;
+    padding: 12px;
+    width: 100%;
+    outline: none;
+    border: 1px solid  #3932c0;
+}
+div.outer-box{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    .inner-box{
+        position: relative;
+        label{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background-color: #3932c0;
+            padding: 12px 20px;
+            border: 1px solid  #3932c0;
+            color: #f2f2f2;
+        }
+    }
+}

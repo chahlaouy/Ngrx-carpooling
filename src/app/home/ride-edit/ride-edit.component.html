@@ -57,7 +57,7 @@
             <img src="../../assets/avatar.png">
           </ion-avatar>
           <ion-label>
-            <h4>
+            <h4 class="text-md">
               {{ride.userInfo.userExtraInfo.username}}
             </h4>
             <h6 class="grey-500">
@@ -83,48 +83,47 @@
             </li>
             <li class="grey-700 py-2">
               {{ride.rideInfo.rideDestination.locality}}, {{ride.rideInfo.rideDestination.adminAreaLevel1}}
-
             </li>
           </ul>
 
         </div>
 
-        <ion-item class="text-right">
+        <ion-item class="text-right text-md">
           <ion-label>
-            عدد المقاعد المتاحة
+            <span >عدد المقاعد المتاحة</span>
           </ion-label>
         </ion-item>
-        <ion-item class="text-right">
+        <ion-item class="text-right text-md">
           <ion-icon name="accessibility-outline" color="primary" slot="end"></ion-icon>
           <ion-label>
             <span>seat * </span><span class="grey-900 text-lg">{{ride.rideInfo.ridePrice}}/RSA</span>
           </ion-label>
           <ion-label>
-            {{ride.rideInfo.rideNumberOfSeats}} seats
+            <span>{{ride.rideInfo.rideNumberOfSeats}} seats</span>
           </ion-label>
         </ion-item>
 
-        <ion-item class="text-right">
+        <ion-item class="text-right text-md">
           <ion-label>
-            معلومات إضافية
+            <span>معلومات إضافية</span>
           </ion-label>
         </ion-item>
-        <ion-item class="text-right">
+        <ion-item class="text-right text-md">
           <ion-label *ngIf="ride.userInfo.userExtraInfo.userFavorite.music == '1'">نعم</ion-label>
           <ion-label *ngIf="ride.userInfo.userExtraInfo.userFavorite.music == '0'">لا</ion-label>
           <ion-label>موسيقى</ion-label>
         </ion-item>
-        <ion-item class="text-right">
+        <ion-item class="text-right text-md">
           <ion-label *ngIf="ride.userInfo.userExtraInfo.userFavorite.smoking=='1'">نعم</ion-label>
           <ion-label *ngIf="ride.userInfo.userExtraInfo.userFavorite.smoking=='0'">لا</ion-label>
           <ion-label>التدخين</ion-label>
         </ion-item>
-        <ion-item class="text-right">
+        <ion-item class="text-right text-md">
           <ion-label *ngIf="ride.userInfo.userExtraInfo.userFavorite.pets=='1'">نعم</ion-label>
           <ion-label *ngIf="ride.userInfo.userExtraInfo.userFavorite.pets=='0'">لا</ion-label>
           <ion-label>الحيوانات الأليفة</ion-label>
         </ion-item>
-        <ion-item class="text-right mb-5">
+        <ion-item class="text-right mb-5 text-md">
           <ion-label *ngIf="ride.userInfo.userExtraInfo.userFavorite.chat=='1'">نعم</ion-label>
           <ion-label *ngIf="ride.userInfo.userExtraInfo.userFavorite.chat=='0'">لا</ion-label>
           <ion-label>دردشة</ion-label>

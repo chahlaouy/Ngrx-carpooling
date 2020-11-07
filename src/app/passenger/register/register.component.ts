@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
-import { FirebaseService } from '../services/firebase.service';
+import { PassengerService } from '../services/passenger.service';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -13,7 +14,7 @@ export class RegisterComponent implements OnInit {
   authError: any;
   constructor(
     private fb: FormBuilder,
-    private authService: FirebaseService,
+    private authService: PassengerService,
     private router:Router
     ) { }
 
@@ -44,7 +45,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(){
     console.log(this.user.value)
-    this.authService.createDriver(this.user.value);
+    this.authService.createPassenger(this.user.value);
   }
 
 }

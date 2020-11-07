@@ -8,13 +8,11 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class FirebaseService { 
-
-  private uploadTask: firebase.storage.UploadTask;
+export class PassengerService {
 
   isLoggedIn = false;
 
-  newDriver: any;
+  passenger: any;
 
   currentUser: any;
  
@@ -39,19 +37,19 @@ export class FirebaseService {
         }
       })
   }
-  async createDriver(driver) {
+  async createPassenger(passenger) {
 
-    await this.angularFireAuth.createUserWithEmailAndPassword(driver.email, driver.password)
+    await this.angularFireAuth.createUserWithEmailAndPassword(passenger.email, passenger.password)
       .then(userCredentials => {
 
-        this.newDriver = driver;
+        this.passenger = passenger;
         localStorage.setItem('uid', userCredentials.user.uid)
         userCredentials.user.updateProfile({
-          displayName: driver.username
+          displayName: passenger.username
         })
         this.insertDriverData(userCredentials)
           .then(response => {
-            this.router.navigate(["/user/dashboard"])
+            this.router.navigate(["/passenger/dashboard"])
           })
       })
       .catch(error => { 
@@ -61,13 +59,12 @@ export class FirebaseService {
   }
 
   insertDriverData(userCredentials: firebase.auth.UserCredential) {
-    return this.db.doc(`users/${userCredentials.user.uid}`).set({
-      gender: this.newDriver.gender,
-      username: this.newDriver.username,
-      email: this.newDriver.email,
-      picture: this.newDriver.picture,
-      phone: this.newDriver.phone,
-      age: this.newDriver.age,
+    return this.db.doc(`passengers/${userCredentials.user.uid}`).set({
+      gender: this.passenger.gender,
+      username: this.passenger.username,
+      email: this.passenger.email,
+      phone: this.passenger.phone,
+      age: this.passenger.age,
     })
   }
 
@@ -75,7 +72,7 @@ export class FirebaseService {
     return this.angularFireAuth.authState;
   }
   getUser() {
-    return this.db.collection('users').doc(localStorage.getItem('uid')).ref.get();
+    return this.db.collection('passengers').doc(localStorage.getItem('uid')).ref.get();
   }
   signOut() {
     return this.angularFireAuth.signOut().then(() => {
