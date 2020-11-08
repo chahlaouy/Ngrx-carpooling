@@ -1,58 +1,66 @@
 <ion-content [fullscreen]="true" color="light">
-  
+
   <div class="wrapper">
     <div class="overlay-wrapper"></div>
-    <ion-header  class="ion-no-border">
+    <ion-header class="ion-no-border">
       <ion-toolbar>
-          <ion-button slot="end" class="box-none mt-3" style="--background: transparent" [routerLink]="['/driver/dashboard']">
-            <ion-icon name="chevron-back" size="large" class="yellow-dark"></ion-icon>
-          </ion-button>    
+        <ion-button slot="end" class="box-none mt-3" style="--background: transparent"
+          [routerLink]="['/passenger/dashboard']">
+          <ion-icon name="chevron-back" size="large" class="yellow-dark"></ion-icon>
+        </ion-button>
       </ion-toolbar>
     </ion-header>
-    
+
     <ion-item class="mt-2 mb-5" lines="none">
       <ion-icon name="bookmarks" slot="start" size="small" class="yellow-dark"></ion-icon>
       <ion-label>
         <ul>
           <li>
-            <h2 class="text-2xl yellow-dark">الحجوزات</h2>
+            <h2 class="text-lg yellow-dark">قائمة الحجوزات</h2>
           </li>
-          <li><span class="text-sm yellow-dark">يمكنك اختيار أي مما يلي تسمح به </span></li>
+          <li><span class="text-sm yellow-dark">قائمة الحجوزات </span></li>
         </ul>
       </ion-label>
-    </ion-item>
+    </ion-item> 
 
     <ion-card class="main-card">
-      <ion-card-content class="p-0">
-        <ion-card *ngFor="let req of requests" class="m-0 rounded-lg">
-          <ion-card-content class="m-0 px-4 py-3">
+      <ion-card-content class="rounded-lg p-0">
 
-            <div class="flex justify-between items-center">
-              <ul>
-                <li class="grey-700"> {{req.currentLocation}} : <span style="color: rgb(86, 97, 252)">11:30</span></li>
-                <li class="grey-700"> {{req.destination}} : <span style="color: rgb(86, 97, 252)">14:30</span> </li>
-              </ul>
-              <div class="flex">
-                <span class="grey-700">number of seats </span>
-                <h1 class="grey-700">{{req.nbSeats}}</h1>
-              </div>
-            </div>
+        <ion-card *ngFor="let req of requests" dir="ltr">
+          <ion-card-header>
+            <ion-card-title>
+              <ion-card-subtitle>
+                {{req.rideInfo.rideInfo.rideDate.rideDayAndMonth.day}},
+                {{req.rideInfo.rideInfo.rideDate.rideDayAndMonth.month}}
+                {{req.rideInfo.rideInfo.rideDate.rideHour.hour}} : {{req.rideInfo.rideInfo.rideDate.rideHour.minute}}
+              </ion-card-subtitle>
+              {{req.rideInfo.rideInfo.rideDestination.locality}}
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item>
+              <ion-icon name="person-outline" color="tertiary" slot="start"></ion-icon>
+              <ion-label>
+                {{req.passengerInfo.username}}
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="body-outline" color="tertiary" slot="start"></ion-icon>
+              <ion-label>
+                {{req.numberOfSeats}} * seat(s)
+              </ion-label>
+            </ion-item>
 
-            <div class="flex mt-2">
-              <div style="margin-left: 10px;">
-                <img src="../../assets/avatar.png" style="width: 50px; height: 50px; border-radius: 25px">
-              </div>
-              <div>
-                <h3 class="grey-700">{{req.name}}</h3>
-                <div class="grey-500 text-sm"> 25</div>
-              </div>
-            </div>
 
+            <ion-item lines="none">
+              <ion-icon name="chatbubble-ellipses-outline" slot="end" color="tertiary" (click)="chatWithPassenger(req)"></ion-icon>
+              <ion-icon name="trash-outline" slot="end" color="danger"></ion-icon>
+            </ion-item>
           </ion-card-content>
         </ion-card>
-       
+
       </ion-card-content>
     </ion-card>
-    
+
   </div>
 </ion-content>

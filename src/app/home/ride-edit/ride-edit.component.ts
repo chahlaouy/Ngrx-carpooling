@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { RequestService } from '../../passenger/services/request.service'
 import { Store } from '@ngrx/store'
 import { Observable } from 'rxjs'
 import { take } from 'rxjs/operators';
@@ -17,10 +18,11 @@ export class RideEditComponent implements OnInit {
   ride: any;
   constructor(
     private store: Store,
-    private router: Router
+    private router: Router,
+    private requestSer: RequestService
   ) { }
 
-  ngOnInit() {
+  ngOnInit() { 
     this.ride$ = this.store.select(fromStore.getSelectedRide).pipe(take(1))
     this.ride$.subscribe(data =>{
       this.ride = data
@@ -28,6 +30,10 @@ export class RideEditComponent implements OnInit {
     )
   }
 
+  nextStepRideSeats(){
+    this.requestSer.setRideInfo(this.ride)
+    this.router.navigate(["/passenger/number-seats"])
+  }
   backRidesList(){
     this.router.navigate(["/home/rides-list"])
   }

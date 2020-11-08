@@ -65,19 +65,15 @@ export class RidesListComponent implements OnInit {
     
   }
   ionViewWillEnter() {
-    console.log('entered')
     this.ridesFilter = this.filterSer.getFilterObject();
-    console.log(this.filterSer)
     this.store.dispatch(new fromStore.LoadRides());
     this.store.select(fromStore.getRidesEntitiesAsArray).subscribe(data => {
       if (this.ridesFilter){
-        console.log('filtered')
         this.rides = data.filter(item => {
           return this.ridesFilter.filterDestination.adminAreaLevel1 == item.rideInfo.rideDestination.adminAreaLevel1 && this.ridesFilter.filterSource.adminAreaLevel1 == item.rideInfo.rideSource.adminAreaLevel1
         })
       }
       else {
-        console.log('not filtered')
         this.rides = data
       }
     })

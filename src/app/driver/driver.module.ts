@@ -10,7 +10,6 @@ import { AgmCoreModule } from '@agm/core';
 
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { DriverCarComponent } from './driver-car/driver-car.component'
-import { DriverInboxComponent } from './driver-inbox/driver-inbox.component'
 import { DriverInfoComponent } from './driver-info/driver-info.component'
 import { DriverReviewsComponent } from './driver-reviews/driver-reviews.component'
 import { DriverRidesComponent } from './driver-rides/driver-rides.component'
@@ -27,7 +26,7 @@ import { RideDateDayComponent } from './ride-date-day/ride-date-day.component'
 import { RideDateHourComponent } from './ride-date-hour/ride-date-hour.component'
 import { ConfirmRideComponent } from './confirm-ride/confirm-ride.component'
 
-import { ChatInterfaceComponent } from './chat-interface/chat-interface.component'
+import { ChatSingleComponent } from './chat-single/chat-single.component'
 
 
 const routes: Routes = [ 
@@ -56,6 +55,10 @@ const routes: Routes = [
     component: RequestsComponent,
   },
   {
+    path: 'requests/chat',
+    component: ChatSingleComponent,
+  },
+  {
     path: 'car',
     component: DriverCarComponent,
   },
@@ -66,10 +69,6 @@ const routes: Routes = [
   {
     path: 'reviews',
     component: DriverReviewsComponent,
-  },
-  {
-    path: 'inbox',
-    component: DriverInboxComponent,
   },
   {
     path: 'info',
@@ -103,17 +102,12 @@ const routes: Routes = [
     path: 'add/confirm-ride',
     component: ConfirmRideComponent,
   },
-  {
-    path: 'chat',
-    component: ChatInterfaceComponent,
-  },
 ];
 
 @NgModule({
   declarations: [
     DashboardComponent,
     DriverCarComponent,
-    DriverInboxComponent,
     DriverInfoComponent,
     DriverReviewsComponent,
     DriverRidesComponent,
@@ -130,7 +124,7 @@ const routes: Routes = [
     RideDateDayComponent,
     RideDateHourComponent,
     ConfirmRideComponent,
-    ChatInterfaceComponent
+    ChatSingleComponent
   ],
   imports: [
     CommonModule,

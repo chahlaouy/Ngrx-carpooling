@@ -26,8 +26,8 @@ export class DriverInfoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userService.getCurrentsUserInfo().subscribe(a=>{
-      this.currentUser = a.data()
+    this.userService.getCurrentsUserInfo().subscribe(user=>{
+      this.currentUser = user.data()
      });
   }
 

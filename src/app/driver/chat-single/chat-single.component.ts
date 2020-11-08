@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ChatService } from '../services/chat.service'
+
 @Component({
   selector: 'app-chat-single',
   templateUrl: './chat-single.component.html',
@@ -7,8 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatSingleComponent implements OnInit {
 
-  constructor() { }
+  message: any;
+  allMessages: any;
+  receiverName = null 
+  constructor(
+    private chatServ: ChatService
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.chatServ.getAllMessages().subscribe(data => {
+      this.allMessages = data
+      console.log(this.allMessages)
+    });
+    this.receiverName = this.chatServ.getChatRoom().receiverName
+  }
+
+  send(){
+    this.chatServ.setMessage(this.message)
+    this.chatServ.sendMessage()
+  }
 
 }

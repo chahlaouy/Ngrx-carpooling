@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { DriverService } from '../services/driver.service';
+
+import { Router } from '@angular/router';
+import { ChatService } from '../services/chat.service';
+
+import { RequestService } from '../services/request.service'
 
 @Component({
   selector: 'app-requests',
@@ -8,17 +12,35 @@ import { DriverService } from '../services/driver.service';
 })
 export class RequestsComponent implements OnInit {
   
-  requests= null;
-  constructor(private userService: DriverService) { }
+  private requests: any;
+  constructor(
+    private requestSer: RequestService,
+    private chatSer: ChatService,
+    private router: Router 
+  ) { }
 
   ngOnInit() {
-    this.initializeRequests();
+    this.requestSer.getAllDriverRequests().subscribe(data => {
+      this.requests = data
+    })
+
   }
 
-  initializeRequests(){
-     this.userService.getCurrentsUserInfo().subscribe(a=>{
-      this.requests = a.data().userCar;
-     });
-  }
+  chatWithPassenger(req){
+    let chatRoom = {
+      chatID: null,
+      receiverUid: null,
+      receiverName: null,
+      senderName: null
+    }
+    chatRoom.chatID = req.chatID;
+    chatRoom.receiverUid = req.passengerUid;
+    chatRoom.receiverName =  req.passengerInfo.username
+    chatRoom.senderName = req.rideInfo.userInfo.userExtraInfo.username
 
+    this.chatSer.setChatRoom(chatRoom)
+
+    this.router.navigate(["/driver/requests/chat"])
+    
+  }
 }

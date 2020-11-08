@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { ChatInterfaceComponent } from './chat-interface.component';
+import { NumberOfSeatsComponent } from './number-of-seats.component';
 
-describe('ChatInterfaceComponent', () => {
-  let component: ChatInterfaceComponent;
-  let fixture: ComponentFixture<ChatInterfaceComponent>;
+describe('NumberOfSeatsComponent', () => {
+  let component: NumberOfSeatsComponent;
+  let fixture: ComponentFixture<NumberOfSeatsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChatInterfaceComponent ],
+      declarations: [ NumberOfSeatsComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ChatInterfaceComponent);
+    fixture = TestBed.createComponent(NumberOfSeatsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

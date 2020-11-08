@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ChatService } from '../services/chat.service';
 
-import { ChatService } from '../services/chat.service'
+import { PassengerService } from '../services/passenger.service';
+import { RequestService } from '../services/request.service'
 
 @Component({
   selector: 'app-chat-interface',
@@ -9,23 +12,41 @@ import { ChatService } from '../services/chat.service'
 })
 export class ChatInterfaceComponent implements OnInit {
 
-  uid: any;
-  message: any;
-  allMessages: any;
+
+  private requests: any;
+  private passengerName = null;
   constructor(
-    private chatServ: ChatService
+    private requestSer: RequestService,
+    private passengerSer: PassengerService, 
+    private chatSer: ChatService,
+    private router: Router
   ) { }
 
   ngOnInit() {
-    this.chatServ.getAllMessages().subscribe(data => {
-      this.allMessages = data
-      console.log(this.allMessages)
+    this.requestSer.getAllPassengersRequest().subscribe(data => {
+      this.requests = data
     })
-    this.uid = localStorage.getItem('uid')
+    this.passengerSer.getUserState().subscribe(user => {
+      this.passengerName = user.displayName
+    })
   }
 
-  send(){
-    this.chatServ.sendMessage(this.message,'C6Iy0BzS5Ecd4bHI4k8wXPfobAx2C6Iy0BzS5Ecd4bHI4k8wXPfobAx2', this.uid, this.uid )
+  chatWithDriver(req){
+    let chatRoom = {
+      chatID: null,
+      receiverUid: null,
+      receiverName: null,
+      senderName: null
+    }
+    chatRoom.chatID = req.chatID;
+    chatRoom.receiverUid = req.driverUid;
+    chatRoom.receiverName = req.rideInfo.userInfo.userExtraInfo.username
+    chatRoom.senderName = this.passengerName
+
+    this.chatSer.setChatRoom(chatRoom)
+
+    this.router.navigate(["/passenger/chat-interface/chat"])
+    
   }
 
 }

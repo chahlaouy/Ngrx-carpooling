@@ -15,6 +15,7 @@ export class PassengerService {
   passenger: any;
 
   currentUser: any;
+
  
   private eventAuthError = new BehaviorSubject<string>("");
   eventAuthError$ = this.eventAuthError.asObservable();
@@ -72,7 +73,7 @@ export class PassengerService {
     return this.angularFireAuth.authState;
   }
   getUser() {
-    return this.db.collection('passengers').doc(localStorage.getItem('uid')).ref.get();
+    return this.db.collection('passengers').doc(localStorage.getItem('uid')).get();
   }
   signOut() {
     return this.angularFireAuth.signOut().then(() => {

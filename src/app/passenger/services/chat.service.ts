@@ -6,18 +6,40 @@ import { AngularFireDatabase, AngularFireList} from '@angular/fire/database';
 })
 export class ChatService {
 
-  private messages: AngularFireList<any>;
-  chatID: any
+  chatRomm = {
+    chatID: null,
+    message: null,
+    senderUid: localStorage.getItem("uid"),
+    receiverUid: null,
+    receiverName: null,
+    senderName: null 
+  }
   constructor(
     private db: AngularFireDatabase
   ) { }
 
-  sendMessage(message, chatID, sender, receiver){
-    this.db.list(`${chatID}`).update('meta', {senderId: sender, recieverId: receiver})
-    this.db.list(`${chatID}/messages`).push({message: message, senderName: 'john full', timestap: new Date().getTime()})
+  setChatRoom(chatRoom){
+    this.chatRomm.chatID = chatRoom.chatID
+    this.chatRomm.receiverUid = chatRoom.receiverUid
+    this.chatRomm.senderName = chatRoom.senderName
+    this.chatRomm.receiverName = chatRoom.receiverName
+  }
+
+  getChatRoom(){
+    return this.chatRomm
+  }
+  setMessage(message){
+    this.chatRomm.message = message
+  }
+  sendMessage(){
+
+    let timestamp = new Date().toLocaleTimeString()
+
+    this.db.list(`${this.chatRomm.chatID}`).update('meta', {passeger: this.chatRomm.senderUid, driver: this.chatRomm.receiverUid})
+    this.db.list(`${this.chatRomm.chatID}/messages`).push({message: this.chatRomm.message, senderName: this.chatRomm.senderName, timestamp: timestamp})
   }
 
   getAllMessages(){
-    return this.db.list('C6Iy0BzS5Ecd4bHI4k8wXPfobAx2C6Iy0BzS5Ecd4bHI4k8wXPfobAx2/messages').valueChanges()
+    return this.db.list(`${this.chatRomm.chatID}/messages`).valueChanges()
   }
 }

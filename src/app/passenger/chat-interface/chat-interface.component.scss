@@ -1,45 +1,15 @@
-ion-toolbar{
-    background: #3932c0;
-}
-
-input{
-    border: none;
-    padding: 12px;
-    width: 100%;
-    outline: none;
-    border: 1px solid  #3932c0;
-}
-div.outer-box{
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    right: 0;
-    .inner-box{
-        position: relative;
-        label{
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            background-color: #3932c0;
-            padding: 12px 20px;
-            border: 1px solid  #3932c0;
-            color: #f2f2f2;
-        }
+.wrapper{
+    position: relative;
+    // background: #2e26d9;
+    background: linear-gradient(90deg, #6370ff 0%, #3932c0 100%);
+    ion-card.main-card{
+        --background: #f2f2f2;
+        --padding: 0 !important;
+        margin: 0px 0px 0px 0px !important;
+        box-shadow: 0px 1px 10px #3932c0;
+        border-radius: 20px;
+        ion-card{
+            box-shadow: none !important;
+        }    
     }
-}
-.received-message, .sended-message{
-    padding: 20px;
-    border-radius: 15px;
-    margin: 10px 0;
-    width: fit-content;
-    color: white;
-}
-.received-message{
-    border-bottom-left-radius: 0px;
-    background: #ff6176;
-}
-.sended-message{
-    border-bottom-right-radius: 0px;
-    background: #3932c0;
-
 }

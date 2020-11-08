@@ -12,6 +12,7 @@ import { ChatSingleComponent } from './chat-single/chat-single.component'
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { LoginComponent } from './login/login.component'
 import { RegisterComponent } from './register/register.component'
+import { NumberOfSeatsComponent } from './number-of-seats/number-of-seats.component'
 
 const routes: Routes = [
   {
@@ -31,7 +32,11 @@ const routes: Routes = [
     component: ChatInterfaceComponent
   },
   {
-    path: 'chat-interface:chatID',
+    path: 'number-seats',
+    component: NumberOfSeatsComponent
+  },
+  {
+    path: 'chat-interface/chat',
     component: ChatSingleComponent
   },
 
@@ -43,7 +48,8 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     ChatInterfaceComponent,
-    ChatSingleComponent
+    ChatSingleComponent,
+    NumberOfSeatsComponent
   ],
   imports: [
     CommonModule,
