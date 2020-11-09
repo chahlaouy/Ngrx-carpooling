@@ -39,7 +39,6 @@ export class DriverService {
   constructor(
     private db: AngularFirestore,
     private firebaseService: FirebaseService,
-    private router: Router,
     private mapsAPILoader: MapsAPILoader,
   ) {
 
@@ -153,5 +152,9 @@ export class DriverService {
         }
       })
     })
+  }
+
+  getAllRides(){
+    return this.db.collection("rides").get()
   }
 }

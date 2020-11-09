@@ -13,6 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard.component'
 import { LoginComponent } from './login/login.component'
 import { RegisterComponent } from './register/register.component'
 import { NumberOfSeatsComponent } from './number-of-seats/number-of-seats.component'
+import { PassengerInfoComponent } from './passenger-info/passenger-info.component'
 
 const routes: Routes = [
   {
@@ -39,6 +40,10 @@ const routes: Routes = [
     path: 'chat-interface/chat',
     component: ChatSingleComponent
   },
+  {
+    path: 'info',
+    component: PassengerInfoComponent
+  },
 
 ]
 
@@ -49,7 +54,8 @@ const routes: Routes = [
     RegisterComponent,
     ChatInterfaceComponent,
     ChatSingleComponent,
-    NumberOfSeatsComponent
+    NumberOfSeatsComponent,
+    PassengerInfoComponent
   ],
   imports: [
     CommonModule,

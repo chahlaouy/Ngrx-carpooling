@@ -27,6 +27,7 @@ export class ChatSingleComponent implements OnInit {
   send(){
     this.chatServ.setMessage(this.message)
     this.chatServ.sendMessage()
+    this.message = ''
   }
 
 }

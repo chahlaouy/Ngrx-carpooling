@@ -11,8 +11,6 @@ import { DriverService } from '../services/driver.service'
 })
 export class DriverInfoComponent implements OnInit {
 
-  
-
   userInfo : FormGroup;
   
   disabledVar= true;

@@ -31,8 +31,12 @@ export class RideEditComponent implements OnInit {
   }
 
   nextStepRideSeats(){
-    this.requestSer.setRideInfo(this.ride)
-    this.router.navigate(["/passenger/number-seats"])
+    if (localStorage.getItem("uid")){
+      this.requestSer.setRideInfo(this.ride)
+      this.router.navigate(["/passenger/number-seats"])
+    }else {
+      this.router.navigate(["/passenger/login"])
+    }
   }
   backRidesList(){
     this.router.navigate(["/home/rides-list"])

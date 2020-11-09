@@ -4,7 +4,7 @@
     <div class="overlay-wrapper"></div>
     <ion-header class="ion-no-border">
       <ion-toolbar>
-        <ion-button slot="end" class="box-none mt-3" style="--background: transparent" [routerLink]="['/driver/dashboard']">
+        <ion-button slot="end" class="box-none mt-3" style="--background: transparent" [routerLink]="['/passenger/dashboard']">
           <ion-icon name="chevron-back" size="large" class="yellow-dark"></ion-icon>
         </ion-button>
       </ion-toolbar>
@@ -28,6 +28,7 @@
               <ion-label>اسم المستخدم</ion-label>
               <ion-input type="text" value="{{currentUser.username}}" [disabled]="disabledVar"></ion-input>
             </ion-item>
+
             <ion-item>
               <ion-label>عمر</ion-label>
               <ion-input type="text" value="{{currentUser.age}}" [disabled]="disabledVar"></ion-input>
@@ -47,7 +48,7 @@
                 تغيير المعلومات الشخصية
               </ion-button>
             </ion-item>
-            <ion-item  *ngIf="!disabledVar">
+            <ion-item  *ngIf="!disabledVar" >
               <ion-button size="large">
                 موافق
               </ion-button>

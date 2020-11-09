@@ -23,7 +23,7 @@ export class PassengerService {
   constructor(
     private angularFireAuth: AngularFireAuth,
     private db: AngularFirestore,
-    private router: Router
+    private router: Router,
   ) { }
 
   signIn(email: string, password: string) {
@@ -78,6 +78,7 @@ export class PassengerService {
   signOut() {
     return this.angularFireAuth.signOut().then(() => {
       localStorage.removeItem("uid")
+      this.router.navigate(['/home'])
     });
   }
 }

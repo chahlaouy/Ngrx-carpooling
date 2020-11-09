@@ -36,6 +36,7 @@ export class RequestService {
 
     this.setChatID()
   }
+  
 
   allowedNumberOfSeats(){
     return this.requestToCollecionDriver.rideInfo.rideInfo.rideNumberOfSeats

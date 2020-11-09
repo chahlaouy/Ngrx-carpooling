@@ -35,8 +35,8 @@ export class ChatService {
 
     let timestamp = new Date().toLocaleTimeString()
 
-    this.db.list(`${this.chatRomm.chatID}`).update('meta', {passeger: this.chatRomm.senderUid, driver: this.chatRomm.receiverUid})
-    this.db.list(`${this.chatRomm.chatID}/messages`).push({message: this.chatRomm.message, senderName: this.chatRomm.senderName, timestamp: timestamp})
+    this.db.list(`${this.chatRomm.chatID}`).update('meta', {passenger: this.chatRomm.senderUid, driver: this.chatRomm.receiverUid})
+    this.db.list(`${this.chatRomm.chatID}/messages`).push({message: this.chatRomm.message, driverName: this.chatRomm.senderName, timestamp: timestamp})
   }
 
   getAllMessages(){

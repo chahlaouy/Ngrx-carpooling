@@ -27,16 +27,18 @@ div.outer-box{
         }
     }
 }
+
 .received-message, .sended-message{
     padding: 20px;
     border-radius: 15px;
     margin: 10px 0;
-    width: fit-content;
+    max-width: 250px;
     color: white;
 }
 .received-message{
     border-bottom-left-radius: 0px;
-    background: #ee8694;
+    background: #e8e7e7;
+    color: #454545;
 }
 .sended-message{
     border-bottom-right-radius: 0px;
@@ -45,8 +47,6 @@ div.outer-box{
 
 .timestamp{
     padding: 5px 10px;
-    background: #e8e7e7;
     color: #454545;
-    border-radius: 5px;
     font-size: 14px;
 }

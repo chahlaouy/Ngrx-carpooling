@@ -80,6 +80,7 @@ export class FirebaseService {
   signOut() {
     return this.angularFireAuth.signOut().then(() => {
       localStorage.removeItem("uid")
+      this.router.navigate(['/home'])
     });
   }
 }

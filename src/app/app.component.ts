@@ -44,6 +44,5 @@ export class AppComponent implements OnInit{
 
   onLogout(){
     this.firebaseService.signOut();
-    this.router.navigate(['/home'])
   }
 }

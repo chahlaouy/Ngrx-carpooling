@@ -9,7 +9,8 @@
     <div class="overlay-wrapper"></div>
     <ion-header class="ion-no-border">
       <ion-toolbar>
-        <ion-button slot="end" class="box-none mt-3" style="--background: transparent" [routerLink]="['/user/dashboard']">
+        <ion-button slot="end" class="box-none mt-3" style="--background: transparent"
+          [routerLink]="['/driver/dashboard']">
           <ion-icon name="chevron-back" size="large" class="yellow-dark"></ion-icon>
         </ion-button>
       </ion-toolbar>
@@ -29,18 +30,41 @@
 
     <ion-card class="main-card mt-5">
       <ion-card-content>
-        <ion-list lines="none">
-          <ion-item>
-            <ion-label>
-              <h1 class="text-lg grey-900">لا يوجد رحلات بعد</h1>
-            </ion-label>
-          </ion-item>
-        </ion-list>
+
+        <ion-item *ngIf="!rides">
+          <ion-label>
+            <h1 class="text-lg grey-900">لا يوجد رحلات بعد</h1>
+          </ion-label>
+        </ion-item>
+
+        <div *ngIf="rides">
+
+          <ion-card *ngFor="let ride of rides">
+            <ion-card-header>
+              <ion-card-title>
+                {{ride.rideInfo.rideSource.address}}
+              </ion-card-title>
+              <ion-card-subtitle>
+                {{ride.rideInfo.rideDestination.address}}
+              </ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-item lines="none">
+                <ion-label>
+                  <span *ngFor="let i of [1, 2, 3, 4]">
+                    <ion-icon name="star-outline" color="warning"></ion-icon>
+                  </span>
+                </ion-label>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+        </div>
+
       </ion-card-content>
     </ion-card>
     <ion-fab>
       <ion-fab-button class="flex-row" [routerLink]="['/driver/add/ride-source']">
-        <ion-icon name="add-circle-outline" size="large" ></ion-icon>
+        <ion-icon name="add-circle-outline" size="large"></ion-icon>
       </ion-fab-button>
     </ion-fab>
   </div>

@@ -1,5 +1,6 @@
 <ion-header >
   <ion-toolbar>
+    <ion-button [routerLink]="['/driver/requests']" color="tertiary" slot="end">عودة</ion-button>
     <ion-title class="grey-100">
       {{receiverName}} 
     </ion-title>
@@ -15,8 +16,13 @@
       </div>
     </div>
     
-    <div class="flex item-center justify-start">
+    <div class="flex item-center justify-start" *ngIf="message.driverName">
       <div class="sended-message">
+        {{message.message}}
+      </div>
+    </div>
+    <div class="flex item-center justify-end" *ngIf="message.passengerName">
+      <div class="received-message">
         {{message.message}}
       </div>
     </div>
