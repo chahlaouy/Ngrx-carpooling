@@ -12,25 +12,25 @@ import { DriverService } from '../services/driver.service'
 export class DriverRidesComponent implements OnInit {
 
   rides = []
+
   constructor(
     private driverSer: DriverService
   ) { }
 
-  ngOnInit() {
-    this.driverSer.getAllRides().pipe(map(value => {
-      value.docs.forEach(doc => {
+  ngOnInit() { 
 
-        console.log('tiiit')
-        if (doc.data().userInfo.userUID == localStorage.getItem("uid")){
-          // return this.rides.push(doc.data())
-          return doc.data()
-        }
-      })
-    })).subscribe(a => {
-      console.log(a)
-    })
-    console.log(this.rides)
-    console.log('tiiit')
   }
 
+  ionViewWillEnter() {
+    this.driverSer.getAllRides().where("userInfo.userUID", "==", localStorage.getItem("uid") )
+    .get()
+    .then(querySnapshot => {
+        querySnapshot.forEach((doc) => {
+            this.rides.push(doc.data())
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    })
+  }
 }

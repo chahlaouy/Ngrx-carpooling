@@ -35,6 +35,7 @@ export class FirebaseService {
         if (userCredentials) {
           this.currentUser = userCredentials.user;
           localStorage.setItem('uid', userCredentials.user.uid)
+          localStorage.setItem('userRole', 'driver')
           this.router.navigate(['/home'])
         }
       })
@@ -51,6 +52,7 @@ export class FirebaseService {
         })
         this.insertDriverData(userCredentials)
           .then(response => {
+            localStorage.setItem('userRole', 'driver')
             this.router.navigate(["/user/dashboard"])
           })
       })
@@ -80,6 +82,7 @@ export class FirebaseService {
   signOut() {
     return this.angularFireAuth.signOut().then(() => {
       localStorage.removeItem("uid")
+      localStorage.removeItem("userRole")
       this.router.navigate(['/home'])
     });
   }

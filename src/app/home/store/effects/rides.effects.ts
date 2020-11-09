@@ -9,7 +9,8 @@ import * as ridesActions from '../actions/rides.actions'
 
 @Injectable() 
 export class RidesEffect {
-
+    
+    private date = new Date();
     constructor ( 
         private actions$: Actions,
         private homeService: HomeService
@@ -23,11 +24,25 @@ export class RidesEffect {
                     const entities : {[id: string] : any} = {};
                     value.docs.forEach(doc => {
                         let index= doc.id;
-                        entities[index] = {
-                            id: index,
-                            ...doc.data()
+                        let dayFromComp = this.date.getDate();
+                        let monthFromComp = this.date.getMonth();
+                        let monthFromRide = doc.data().rideInfo.rideDate.rideDayAndMonth.monthValue;
+                        let dayFromRide = doc.data().rideInfo.rideDate.rideDayAndMonth.day;
 
+                        if (((parseInt(monthFromRide)) == (monthFromComp + 1) && (parseInt(dayFromRide) >= dayFromComp)) || (parseInt(monthFromRide) > (monthFromComp + 1))){
+                            entities[index] = {
+                                id: index,
+                                ...doc.data()
+
+                            }
                         }
+                        // if (){
+                        //     entities[index] = {
+                        //         id: index,
+                        //         ...doc.data()
+
+                        //     }
+                        // }
                     });
                     return new ridesActions.LoadRidesSuccess(entities)
                 }

@@ -12,12 +12,12 @@
       <ion-grid>
         <ion-row>
 
-          <ion-col class="flex">
+          <!-- <ion-col class="flex">
             <div>
               <h2 class="grey-100">لا توجد حجوزات جديدة </h2>
               <span class="sub"></span>
             </div>
-          </ion-col>
+          </ion-col> -->
 
           <ion-col class="flex">
             <ion-button size="large" [routerLink]="['/driver/rides']">
@@ -40,6 +40,15 @@
             <ion-row class="ion-text-center mt-4">
               <ion-col>
                 <div class="flex justify-center items-center">
+                  <ion-fab-button color="light" type="button" [routerLink]="['/driver/wallet']">
+                    <ion-icon name="bookmarks-outline" class="grey-900"></ion-icon>
+                  </ion-fab-button>
+                </div>
+                <h3>محفظتي</h3>
+
+              </ion-col>
+              <ion-col>
+                <div class="flex justify-center items-center">
                   <ion-fab-button color="light" type="button" [routerLink]="['/driver/requests']">
                     <ion-icon name="bookmarks-outline" class="grey-900"></ion-icon>
                   </ion-fab-button>
@@ -53,16 +62,7 @@
                     <ion-icon name="car-sport-outline" class="blue-600"></ion-icon>
                   </ion-fab-button>
                 </div>
-                <h3>اضف رحلة</h3>
-
-              </ion-col>
-              <ion-col>
-                <div class="flex justify-center items-center">
-                  <ion-fab-button color="light" type="button" [routerLink]="['/home']">
-                    <ion-icon name="home" class="yellow-600"></ion-icon>
-                  </ion-fab-button>
-                </div>
-                <h3> الصفحة الريسية</h3>
+                <h3>الرحالات</h3>
 
               </ion-col>
             </ion-row>
@@ -100,8 +100,6 @@
               </ion-col>
 
             </ion-row>
-
-
 
           </ion-grid>
 

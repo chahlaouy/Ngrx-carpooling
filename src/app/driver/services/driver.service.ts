@@ -28,7 +28,8 @@ export class DriverService {
   private rideDate = {
     rideDayAndMonth: {
       day: '',
-      month: ''
+      month: '',
+      monthValue: ''
     },
     rideHour: {
       hour: '',
@@ -48,6 +49,7 @@ export class DriverService {
   setRideDayAndMonth(date){
     this.rideDate.rideDayAndMonth.day = date.day.text
     this.rideDate.rideDayAndMonth.month = date.month.text
+    this.rideDate.rideDayAndMonth.monthValue = date.month.value
   }
   setRideHour(dateInHour){
     this.rideDate.rideHour.hour = dateInHour.hour.text
@@ -155,6 +157,6 @@ export class DriverService {
   }
 
   getAllRides(){
-    return this.db.collection("rides").get()
+    return this.db.collection("rides").ref
   }
 }

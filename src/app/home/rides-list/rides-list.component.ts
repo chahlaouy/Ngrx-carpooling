@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -28,19 +28,12 @@ export class RidesListComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.store.dispatch(new fromStore.LoadRides());
-    this.store.select(fromStore.getRidesEntitiesAsArray).subscribe(data => {
-      this.rides = data
-    })
-    this.loaded$ = this.store.select(fromStore.getRidesLoading)
-    // this.presentLoading().then((spinner) => {
-    //   spinner.present()
-    //   this.loaded$.subscribe(loaded => { 
-    //     if (loaded){
-    //       spinner.dismiss()
-    //     }
-    //   })
+    // this.store.dispatch(new fromStore.LoadRides());
+    // this.store.select(fromStore.getRidesEntitiesAsArray).subscribe(data => {
+    //   this.rides = data
     // })
+    // this.loaded$ = this.store.select(fromStore.getRidesLoading)
+   
   }
 
   pushHome(){
@@ -64,6 +57,7 @@ export class RidesListComponent implements OnInit {
     })
     
   }
+  
   ionViewWillEnter() {
     this.ridesFilter = this.filterSer.getFilterObject();
     this.store.dispatch(new fromStore.LoadRides());
@@ -78,14 +72,5 @@ export class RidesListComponent implements OnInit {
       }
     })
   }
-  // ionViewWillLeave() {
-  //   this.ngOnDestroy();
-    
-  // }
-
-  // @HostListener('unload')
-  // ngOnDestroy() {
-  //   console.log('destroyed')
-  // }
   
 }

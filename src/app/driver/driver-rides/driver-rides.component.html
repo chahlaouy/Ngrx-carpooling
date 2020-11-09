@@ -1,8 +1,3 @@
-<!-- <p>
-  user-rides works!
-  cd "C:\Program Files\Oracle\Virtualbox"
-  VBoxManage setextradata “Mac OS Mojave” VBoxInternal2/EfiGraphicsResolution 1024x768
-</p> -->
 <ion-content [fullscreen]="true" color="light">
 
   <div class="wrapper">
@@ -28,8 +23,8 @@
       </ion-label>
     </ion-item>
 
-    <ion-card class="main-card mt-5">
-      <ion-card-content>
+    <ion-card class="main-card mt-5" dir="ltr">
+      <ion-card-content class="p-0">
 
         <ion-item *ngIf="!rides">
           <ion-label>
@@ -41,21 +36,44 @@
 
           <ion-card *ngFor="let ride of rides">
             <ion-card-header>
-              <ion-card-title>
-                {{ride.rideInfo.rideSource.address}}
-              </ion-card-title>
               <ion-card-subtitle>
-                {{ride.rideInfo.rideDestination.address}}
+                {{ride.rideInfo.rideDate.rideDayAndMonth.day}}, {{ride.rideInfo.rideDate.rideDayAndMonth.month}}
+                
               </ion-card-subtitle>
+              <ion-card-title>
+                {{ride.rideInfo.rideNumberOfSeats}} * seats
+              </ion-card-title>
             </ion-card-header>
             <ion-card-content>
-              <ion-item lines="none">
-                <ion-label>
-                  <span *ngFor="let i of [1, 2, 3, 4]">
-                    <ion-icon name="star-outline" color="warning"></ion-icon>
-                  </span>
-                </ion-label>
-              </ion-item>
+              
+              <div class="flex justify-between item-center">
+                <ul class="list-rides">
+                  <li class="grey-700 py-2"> 
+                    {{ride.rideInfo.rideSource.locality}}, {{ride.rideInfo.rideSource.adminAreaLevel1}} 
+                    <span style="color: rgb(86, 97, 252)">{{ride.rideInfo.rideDate.rideHour.hour}}:{{ride.rideInfo.rideDate.rideHour.minute}}</span>
+                  </li>
+                  <li class="grey-700 py-2">
+                     {{ride.rideInfo.rideDestination.locality}}, {{ride.rideInfo.rideDestination.adminAreaLevel1}} 
+                     
+                  </li>
+                </ul>
+  
+                <div>
+                  <div class="flex justify-start items-start">
+                    <h1 class="grey-900">
+                      {{ride.rideInfo.ridePrice}}
+                    </h1>
+                    <span class="grey-700">/RSA</span>
+                  </div>
+                </div>
+  
+              </div>
+              <!-- <ion-item>
+                <ion-button>
+                  <ion-label>إلى أرشيف</ion-label>
+                  <ion-icon name="archive-outline" slot="end"></ion-icon>
+                </ion-button>
+              </ion-item> -->
             </ion-card-content>
           </ion-card>
         </div>

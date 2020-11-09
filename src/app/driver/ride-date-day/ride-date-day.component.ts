@@ -19,7 +19,8 @@ export class RideDateDayComponent implements OnInit {
       this.error = "يرجى إدخال تاريخ"
       return
     }
-    this.userSer.setRideDayAndMonth(this.date); 
+    this.userSer.setRideDayAndMonth(this.date);
+    console.log(this.date)
     this.router.navigate(['/driver/add/ride-hour']); 
   }
   customDayShortNames = ['Monday', 'Thursday', 'Tuesday', 'Wednesday', 'Friday', 'Saturday', 'Sunday'];

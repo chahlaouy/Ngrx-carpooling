@@ -34,6 +34,7 @@ export class PassengerService {
         if (userCredentials) {
           this.currentUser = userCredentials.user;
           localStorage.setItem('uid', userCredentials.user.uid)
+          localStorage.setItem('userRole', 'passenger')
           this.router.navigate(['/home'])
         }
       })
@@ -50,6 +51,7 @@ export class PassengerService {
         })
         this.insertDriverData(userCredentials)
           .then(response => {
+            localStorage.setItem('userRole', 'passenger')
             this.router.navigate(["/passenger/dashboard"])
           })
       })
@@ -78,6 +80,7 @@ export class PassengerService {
   signOut() {
     return this.angularFireAuth.signOut().then(() => {
       localStorage.removeItem("uid")
+      localStorage.removeItem("userRole")
       this.router.navigate(['/home'])
     });
   }

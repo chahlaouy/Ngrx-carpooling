@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component'
 import { RegisterComponent } from './register/register.component'
 import { NumberOfSeatsComponent } from './number-of-seats/number-of-seats.component'
 import { PassengerInfoComponent } from './passenger-info/passenger-info.component'
+import { PaymentTreeComponent } from './payment-tree/payment-tree.component'
 
 const routes: Routes = [
   {
@@ -44,6 +45,10 @@ const routes: Routes = [
     path: 'info',
     component: PassengerInfoComponent
   },
+  {
+    path: 'payment-tree',
+    component: PaymentTreeComponent
+  },
 
 ]
 
@@ -55,7 +60,8 @@ const routes: Routes = [
     ChatInterfaceComponent,
     ChatSingleComponent,
     NumberOfSeatsComponent,
-    PassengerInfoComponent
+    PassengerInfoComponent,
+    PaymentTreeComponent
   ],
   imports: [
     CommonModule,

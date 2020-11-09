@@ -35,7 +35,6 @@ export class FilterFavoriteComponent implements OnInit {
   
   onSubmit(){
     this.filterService.setFilterFavorite(this.userFavorite.value);
-    console.log(this.filterService.getFilterObject());
     this.router.navigate(["/home/rides-list"])
   }
 

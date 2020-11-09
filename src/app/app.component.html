@@ -1,19 +1,21 @@
 <ion-app>
   <ion-menu menuId="main-menu" contentId="main">
     <ion-content>
-      <div *ngIf="currentUser != null">
+
+
+      <div *ngIf="userRole == 'driver'">
 
         <div id="menu-header">
         </div>
         <div id="header-content">
           <ion-label>
-            <h2 class="text-xl">{{currentUser.displayName}}</h2>
-            <p>مرحبا بكم في تطبيق معك</p>
+            <h2 class="text-md">{{currentUser.displayName}}</h2>
+            <p> تطبيق معك</p>
           </ion-label>
           <img src="../assets/avatar.png" alt="">
         </div>
         <div class="btn">
-          <ion-button expand="block" mode="ios">
+          <ion-button expand="block" mode="ios" [routerLink]="['/driver/add/ride-source']">
             أضف رحلة
             <ion-icon name="add-circle-outline" slot="end"></ion-icon>
           </ion-button>
@@ -33,10 +35,6 @@
               اضف رحلة
               <ion-icon name="add-circle" slot="start"></ion-icon>
             </ion-item>
-            <ion-item button [routerLink]="['/driver/box']">
-              صندوق الرسائل
-              <ion-icon name="chatbubble" slot="start"></ion-icon>
-            </ion-item>
             <ion-item  button [routerLink]="['/driver/favorite']">
               تفضيلاتي
               <ion-icon name="heart" slot="start"></ion-icon>
@@ -45,6 +43,11 @@
               سيارتي
               <ion-icon name="car-sport" slot="start"></ion-icon>
             </ion-item>
+            <ion-item button [routerLink]="['/home']">
+              الصفحة الريسية
+              <ion-icon name="bookmarks" slot="start"></ion-icon>
+            <ion-icon name="car-sport" slot="start"></ion-icon>
+            </ion-item>
             <ion-item  (click)="onLogout()">
               تسجيل خروج
               <ion-icon name="exit" slot="start"></ion-icon>
@@ -52,6 +55,49 @@
           </ion-list>
         </ion-menu-toggle>
       </div>
+
+
+      <div *ngIf="userRole == 'passenger'">
+
+        <div id="menu-header">
+        </div>
+        <div id="header-content">
+          <ion-label>
+            <h2 class="text-md">{{currentUser.displayName}}</h2>
+            <p> تطبيق معك</p>
+          </ion-label>
+          <img src="../assets/avatar.png" alt="">
+        </div>
+        <div class="btn">
+          <ion-button expand="block" mode="ios" [routerLink]="['/home/rides-list']">
+            احجز الان
+            <ion-icon name="add-circle-outline" slot="end"></ion-icon>
+          </ion-button>
+        </div>
+        <ion-menu-toggle>
+
+          <ion-list lines="none" class="menu-items">
+            <ion-item button class="active" [routerLink]="['/passenger/dashboard']">
+              لوحتي
+              <ion-icon name="apps" slot="start"></ion-icon>
+            </ion-item>
+            <ion-item button [routerLink]="['/passenger/chat-interface']">
+              الحجوزات
+              <ion-icon name="bookmarks" slot="start"></ion-icon>
+            </ion-item>
+            <ion-item button [routerLink]="['/passenger/info']">
+              معلومات عامة
+              <ion-icon name="add-circle" slot="start"></ion-icon>
+            </ion-item>
+            <ion-item  (click)="onLogout()">
+              تسجيل خروج
+              <ion-icon name="exit" slot="start"></ion-icon>
+            </ion-item>
+          </ion-list>
+        </ion-menu-toggle>
+      </div>
+
+
       <div *ngIf="currentUser === null"> 
         <ion-card class="bg-blue-600">
           <ion-card-header>
@@ -61,13 +107,13 @@
           </ion-card-header>
           <ion-card-content>
             <ion-menu-toggle>
-              <ion-item [routerLink]="['/driver/register']" >
+              <ion-item [routerLink]="['/home/choose-interface']" >
                 <ion-label class="grey-100">عضو جديد</ion-label>
                 <ion-icon name="person-add-outline" class="grey-100"></ion-icon>
               </ion-item>
             </ion-menu-toggle>
             <ion-menu-toggle>
-              <ion-item [routerLink]="['/driver/login']">
+              <ion-item [routerLink]="['/home/choose-interface']">
                 <ion-label class="grey-100">تسجيل الدخول</ion-label>
                 <ion-icon name="log-in-outline" class="grey-100"></ion-icon>
               </ion-item>

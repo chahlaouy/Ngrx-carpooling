@@ -14,6 +14,7 @@ import { FilterSourceComponent } from './filter-source/filter-source.component'
 import { FilterDestinationComponent } from './filter-destination/filter-destination.component'
 import { FilterDateComponent } from './filter-date/filter-date.component'
 import { FilterFavoriteComponent } from './filter-favorite/filter-favorite.component'
+import { ChooseInterfaceComponent } from './choose-interface/choose-interface.component'
 
 import { StoreModule } from '@ngrx/store'
 import { EffectsModule } from '@ngrx/effects'
@@ -57,6 +58,10 @@ const routes: Routes = [
     path: 'filter/favorite',
     component: FilterFavoriteComponent
   },
+  {
+    path: 'choose-interface',
+    component: ChooseInterfaceComponent
+  },
 ]
 @NgModule({
   declarations: [
@@ -67,7 +72,8 @@ const routes: Routes = [
     FilterDateComponent,
     FilterDestinationComponent,
     FilterSourceComponent,
-    FilterHomeComponent
+    FilterHomeComponent,
+    ChooseInterfaceComponent
   ],
   imports: [
     CommonModule, 

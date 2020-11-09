@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit{
    
   currentUser: firebase.User;
+  userRole = null
 
   constructor(
     private platform: Platform,
@@ -31,6 +32,8 @@ export class AppComponent implements OnInit{
     this.firebaseService.getUserState()
       .subscribe(user => {
         this.currentUser = user
+        this.userRole = localStorage.getItem("userRole")
+        console.log(this.userRole)
       })
      
   }
