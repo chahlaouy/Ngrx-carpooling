@@ -23,18 +23,15 @@
       </ion-label>
     </ion-item>
 
-    <ion-card class="main-card mt-5" dir="ltr">
+    <ion-card class="main-card mt-5 bg-white" dir="ltr">
       <ion-card-content class="p-0">
-
         <ion-item *ngIf="!rides">
           <ion-label>
             <h1 class="text-lg grey-900">لا يوجد رحلات بعد</h1>
           </ion-label>
         </ion-item>
-
         <div *ngIf="rides">
-
-          <ion-card *ngFor="let ride of rides">
+          <ion-card *ngFor="let ride of rides" color="light">
             <ion-card-header>
               <ion-card-subtitle>
                 {{ride.rideInfo.rideDate.rideDayAndMonth.day}}, {{ride.rideInfo.rideDate.rideDayAndMonth.month}}
@@ -44,36 +41,39 @@
                 {{ride.rideInfo.rideNumberOfSeats}} * seats
               </ion-card-title>
             </ion-card-header>
-            <ion-card-content>
-              
+            <ion-card-content> 
+
               <div class="flex justify-between item-center">
                 <ul class="list-rides">
-                  <li class="grey-700 py-2"> 
-                    {{ride.rideInfo.rideSource.locality}}, {{ride.rideInfo.rideSource.adminAreaLevel1}} 
-                    <span style="color: rgb(86, 97, 252)">{{ride.rideInfo.rideDate.rideHour.hour}}:{{ride.rideInfo.rideDate.rideHour.minute}}</span>
+                  <li class="grey-700 py-2">
+                    <ion-item>
+                      <ion-label>
+                        {{ride.rideInfo.rideSource.locality}}, {{ride.rideInfo.rideSource.adminAreaLevel1}}
+                        <span
+                          style="color: rgb(86, 97, 252)">{{ride.rideInfo.rideDate.rideHour.hour}}:{{ride.rideInfo.rideDate.rideHour.minute}}</span>
+                      </ion-label>
+                    </ion-item>
                   </li>
                   <li class="grey-700 py-2">
-                     {{ride.rideInfo.rideDestination.locality}}, {{ride.rideInfo.rideDestination.adminAreaLevel1}} 
-                     
+                    <ion-item>
+                      <ion-label>
+                        {{ride.rideInfo.rideDestination.locality}}, {{ride.rideInfo.rideDestination.adminAreaLevel1}}
+                      </ion-label>
+                    </ion-item>
+  
                   </li>
                 </ul>
   
-                <div>
-                  <div class="flex justify-start items-start">
-                    <h1 class="grey-900">
-                      {{ride.rideInfo.ridePrice}}
-                    </h1>
-                    <span class="grey-700">/RSA</span>
-                  </div>
-                </div>
-  
               </div>
-              <!-- <ion-item>
-                <ion-button>
-                  <ion-label>إلى أرشيف</ion-label>
-                  <ion-icon name="archive-outline" slot="end"></ion-icon>
-                </ion-button>
-              </ion-item> -->
+              <div class="flex item-center justify-end">
+                <div class="flex justify-start items-start">
+                  <h1 class="grey-900 text-xl">
+                    {{ride.rideInfo.ridePrice}}
+                  </h1>
+                  <span class="grey-700">/RSA</span>
+                </div>
+              </div>
+
             </ion-card-content>
           </ion-card>
         </div>

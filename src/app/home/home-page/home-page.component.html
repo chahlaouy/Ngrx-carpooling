@@ -1,21 +1,92 @@
 <ion-content [fullscreen]="true">
   <div class="wrapper">
     <div class="overlay-wrapper"></div>
-    <ion-header  class="ion-no-border">
-      <ion-toolbar >
-        <div class="flex-inbetween mt">
+    <ion-header  class="ion-no-border"> 
+      <ion-toolbar>
+        <div class="flex-inbetween mt ">
           <ion-button slot="start" class="box-none" style="--background: transparent">
-            <ion-icon name="notifications-outline" color="dark"></ion-icon>
+            <ion-icon name="notifications-outline" color="light"></ion-icon>
           </ion-button>
           <h1 class="title">معك</h1>
           <ion-buttons dir="ltr">
             <ion-menu-button menu="main-menu">
-              <ion-icon name="apps" color="dark"></ion-icon>
+              <ion-icon name="apps" color="light"></ion-icon>
             </ion-menu-button>
           </ion-buttons>
+        </div> 
+        <div class="px-2">
+
+          <div class="mt-5">
+            مرحبًا بكم في معاك هنا ، يمكنك العثور على الألعاب والسائقين
+          </div>
+          <div class="mt-5">
+            <ion-button color="light">
+              أحدث الإعلانات
+            </ion-button>
+            <ion-button color="dark">
+              أحدث الإعلانات
+            </ion-button>
+          </div>
         </div>
       </ion-toolbar>
     </ion-header>
+    <div class="flex justify-between item-center">
+      <ion-card class="flex-1">
+        <ion-card-header>
+          <ion-card-content>
+            <div class="flex-row justify-center item-center">
+              <ion-fab-button color="tertiary" type="button" [routerLink]="['/home/rides-list']">
+                <ion-icon name="car-sport" color="light"></ion-icon>
+              </ion-fab-button>
+            </div>
+            <div class="flex-row justify-center item-center mt-2">
+              <h1 class="text-md">توصيل</h1>
+            </div>
+          </ion-card-content>
+        </ion-card-header>
+      </ion-card>
+      <ion-card class="flex-1">
+        <ion-card-header>
+          <ion-card-content>
+            <div class="flex-row justify-center item-center">
+              <ion-fab-button color="warning" type="button">
+                <ion-icon name="bag-handle" color="light"></ion-icon>
+              </ion-fab-button>
+            </div>
+            <div class="flex-row justify-center item-center mt-2">
+              <h1 class="text-md">طرد</h1>
+            </div>
+          </ion-card-content>
+        </ion-card-header>
+      </ion-card>
+    </div>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>
+          احجز مشوار
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ul class="list-rides">
+          <li class="grey-700 py-2">
+            <ion-item class="grey-900">
+              <ion-icon name="location-outline" slot="end" class="grey-700"></ion-icon>
+              <ion-label>موقعك الحالي</ion-label>
+            </ion-item> 
+            
+          </li>
+          <li class="grey-700 py-2">
+            <ion-item class="grey-600">
+              <ion-icon name="search" slot="end"></ion-icon>
+              <ion-label>الي اين تود الذهاب</ion-label>
+            </ion-item>
+          </li>
+        </ul>
+        <ion-button expand="block" class="bg-yellow-200" (click)="filterHomeDestination()">
+          حدد نقطة الوصول
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
     <ion-card class="main-card">
       <ion-card-header>
         <h3 class="title">أحدث الإعلانات</h3>

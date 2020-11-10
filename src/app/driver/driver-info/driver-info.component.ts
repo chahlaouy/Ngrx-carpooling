@@ -12,21 +12,38 @@ import { DriverService } from '../services/driver.service'
 export class DriverInfoComponent implements OnInit {
 
   userInfo : FormGroup;
-  
-  disabledVar= true;
-
   currentUser= null;
-
+  userAdditionalInformation: any;
   constructor( 
     private fb: FormBuilder,
     private router:Router,
-    private userService: DriverService
+    private driverSer: DriverService
   ) { }
 
+
   ngOnInit() {
-    this.userService.getCurrentsUserInfo().subscribe(user=>{
-      this.currentUser = user.data()
+    this.driverSer.getCurrentsUserInfo().subscribe(user=>{
+      this.currentUser = user.data() 
      });
+     this.initializeForm()
+  }
+
+  initializeForm(){ 
+    this.userAdditionalInformation = this.fb.group({ 
+      address: "",
+      picture: ""
+
+    })
+  }
+
+  getImage(e){
+    this.userAdditionalInformation.value.picture = e.target.files[0];
+    console.log(this.userAdditionalInformation.value.picture);
+  }
+
+  onSubmit(){
+    console.log(this.userAdditionalInformation.value)
+    this.driverSer.updateImageAndAddress(this.userAdditionalInformation)
   }
 
 }

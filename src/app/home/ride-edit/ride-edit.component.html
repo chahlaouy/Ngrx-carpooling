@@ -41,7 +41,7 @@
       </ion-label>
     </ion-item>
 
-    <ion-card class="main-card" dir="ltr">
+    <ion-card class="main-card bg-white" dir="ltr">
       <ion-card-header>
         <ion-card-subtitle>
 
@@ -79,15 +79,32 @@
             <div class="flex justify-between item-center">
               <ul class="list-rides">
                 <li class="grey-700 py-2">
-                  {{ride.rideInfo.rideSource.locality}}, {{ride.rideInfo.rideSource.adminAreaLevel1}}
-                  <span
-                    style="color: rgb(86, 97, 252)">{{ride.rideInfo.rideDate.rideHour.hour}}:{{ride.rideInfo.rideDate.rideHour.minute}}</span>
+                  <ion-item>
+                    <ion-label>
+                      {{ride.rideInfo.rideSource.locality}}, {{ride.rideInfo.rideSource.adminAreaLevel1}}
+                      <span
+                        style="color: rgb(86, 97, 252)">{{ride.rideInfo.rideDate.rideHour.hour}}:{{ride.rideInfo.rideDate.rideHour.minute}}</span>
+                    </ion-label>
+                  </ion-item>
                 </li>
                 <li class="grey-700 py-2">
-                  {{ride.rideInfo.rideDestination.locality}}, {{ride.rideInfo.rideDestination.adminAreaLevel1}}
+                  <ion-item>
+                    <ion-label>
+                      {{ride.rideInfo.rideDestination.locality}}, {{ride.rideInfo.rideDestination.adminAreaLevel1}}
+                    </ion-label>
+                  </ion-item>
+
                 </li>
               </ul>
-    
+
+            </div>
+            <div class="flex item-center justify-end">
+              <div class="flex justify-start items-start">
+                <h1 class="grey-900 text-xl">
+                  {{ride.rideInfo.ridePrice}}
+                </h1>
+                <span class="grey-700">/RSA</span>
+              </div>
             </div>
           </ion-card-content>
         </ion-card>

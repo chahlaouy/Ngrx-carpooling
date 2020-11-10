@@ -29,17 +29,17 @@ ion-fab{
     }
 }
 ul.list-rides{
-
     position: relative;
 
     li:first-child::before{
         content: "";
         position: absolute;
-        width: 15px;
-        height: 15px;
-        background-color: #5356e6;
-        top: 15px;
-        left: -20px;
+        width: 14px;
+        height: 14px;
+        // background-color: #5356e6;
+        border: 1px solid #5356e6;
+        top: 25px;
+        left: -9px;
         border-radius: 100%;
     }
     li:last-child::before{ 
@@ -48,20 +48,19 @@ ul.list-rides{
         width: 14px;
         height: 14px;
         border: 1px solid #5356e6;
-        /* padding: 3px; */
-        background-color: #fad873;
-        bottom: 20px;
-        left: -20px;
+        background-color: #5356e6;
+        bottom: 35px;
+        left: -9px;
         border-radius: 100%;
     }
 }
+
 ul.list-rides::before{
     content: "";
     position: absolute;
-    height: 25px;
-    top: 37px;
-    left: -13px;
-    border: 1px dashed #5356e6;
+    height: 60px;
+    top: 50px;
+    left: -2px;
+    border: 1px solid #5356e6;
 }
-
 

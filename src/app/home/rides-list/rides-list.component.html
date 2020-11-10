@@ -6,8 +6,8 @@
   </ion-fab> -->
   <div class="wrapper">
     <!-- <div class="overlay-wrapper"></div> -->
-    <ion-header  class="ion-no-border">
-      <ion-toolbar >
+    <ion-header class="ion-no-border">
+      <ion-toolbar>
         <div class="flex item-center justify-between mx-2 mt-2">
 
           <ion-button slot="start" class="box-none" style="--background: transparent">
@@ -33,13 +33,14 @@
         </ion-label>
         <ion-icon name="golf-outline" slot="start" size="small" class="yellow-dark"></ion-icon>
       </ion-item>
-  
+
       <ion-item class="mt-2" lines="none">
         <ion-icon name="timer-outline" slot="start" size="small" class="yellow-dark"></ion-icon>
         <ion-label>
           <ul>
             <li>
-              <h4 class="text-lg yellow-dark">{{ridesFilter.filterDate.month.text}}, {{ridesFilter.filterDate.day.text}}</h4>
+              <h4 class="text-lg yellow-dark">{{ridesFilter.filterDate.month.text}}, {{ridesFilter.filterDate.day.text}}
+              </h4>
             </li>
             <li><span class="text-sm yellow-dark">متوسط ​​مدة الوصول 2 ساعة</span></li>
           </ul>
@@ -54,39 +55,51 @@
       </ion-label>
     </ion-item>
 
-    <ion-card class="main-card">
+    <ion-card class="main-card bg-white">
       <ion-card-content class="p-0">
-        <ion-card *ngFor="let ride of rides" class="rounded-lg" dir="ltr">
+        <ion-card *ngFor="let ride of rides" class="rounded-lg bg-yellow-200" dir="ltr">
           <ion-card-content class="m-0 px-4 py-3">
-
+            <div>
+              <span>
+                {{ride.rideInfo.rideDate.rideDayAndMonth.day}}, {{ride.rideInfo.rideDate.rideDayAndMonth.month}}
+              </span>
+            </div>
             <div class="flex justify-between item-center">
               <ul class="list-rides">
-                <li class="grey-700 py-2"> 
-                  {{ride.rideInfo.rideSource.locality}}, {{ride.rideInfo.rideSource.adminAreaLevel1}} 
-                  <span style="color: rgb(86, 97, 252)">{{ride.rideInfo.rideDate.rideHour.hour}}:{{ride.rideInfo.rideDate.rideHour.minute}}</span>
+                <li class="grey-700 py-2">
+                  <ion-item>
+                    <ion-label>
+                      {{ride.rideInfo.rideSource.locality}}, {{ride.rideInfo.rideSource.adminAreaLevel1}}
+                      <span
+                        style="color: rgb(86, 97, 252)">{{ride.rideInfo.rideDate.rideHour.hour}}:{{ride.rideInfo.rideDate.rideHour.minute}}</span>
+                    </ion-label>
+                  </ion-item>
                 </li>
                 <li class="grey-700 py-2">
-                   {{ride.rideInfo.rideDestination.locality}}, {{ride.rideInfo.rideDestination.adminAreaLevel1}} 
-                   
+                  <ion-item>
+                    <ion-label>
+                      {{ride.rideInfo.rideDestination.locality}}, {{ride.rideInfo.rideDestination.adminAreaLevel1}}
+                    </ion-label>
+                  </ion-item>
+
                 </li>
               </ul>
 
-              <div>
-                <div class="flex justify-start items-start">
-                  <h1 class="grey-900">
-                    {{ride.rideInfo.ridePrice}}
-                  </h1>
-                  <span class="grey-700">/RSA</span>
-                </div>
+            </div>
+            <div class="flex item-center justify-end">
+              <div class="flex justify-start items-start">
+                <h1 class="grey-900 text-xl">
+                  {{ride.rideInfo.ridePrice}}
+                </h1>
+                <span class="grey-700">/RSA</span>
               </div>
-
             </div>
 
             <ion-item>
 
               <ion-avatar slot="start">
                 <img src="../../assets/avatar.png">
-              </ion-avatar>        
+              </ion-avatar>
               <ion-label>
                 <h4 class="text-md">
                   {{ride.userInfo.userExtraInfo.username}}
@@ -101,23 +114,23 @@
                   <ion-icon name="star" color="warning"></ion-icon>
                 </h6>
               </ion-label>
-              
+
 
             </ion-item>
 
-            <ion-button color="light" expand="block" routerLink="/home/rides-list/{{ride.id}}">
-              <ion-icon name="chevron-back-outline" color="primary" slot="start"></ion-icon>
+            <ion-button color="tertiary" expand="block" routerLink="/home/rides-list/{{ride.id}}">
+              <ion-icon name="chevron-back-outline" color="light" slot="start"></ion-icon>
               <ion-label class="text-right">
-                 مزيد التفاصيل
+                مزيد التفاصيل
               </ion-label>
-              
+
             </ion-button>
           </ion-card-content>
         </ion-card>
-       
+
       </ion-card-content>
     </ion-card>
-    
+
   </div>
   <ion-fab>
     <ion-fab-button class="flex-row" [routerLink]="['/home/filter/home']">

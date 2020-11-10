@@ -159,4 +159,9 @@ export class DriverService {
   getAllRides(){
     return this.db.collection("rides").ref
   }
+
+
+  updateImageAndAddress(form){
+
+  }
 }

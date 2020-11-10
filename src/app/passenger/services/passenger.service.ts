@@ -56,7 +56,7 @@ export class PassengerService {
           })
       })
       .catch(error => { 
-        console.log(error)
+        console.log(error) 
         this.eventAuthError.next(error)
       })
   }
@@ -69,6 +69,10 @@ export class PassengerService {
       phone: this.passenger.phone,
       age: this.passenger.age,
     })
+  }
+
+  updateImageAndAddress(form){
+
   }
 
   getUserState() {

@@ -1,7 +1,7 @@
 .box-none{
     --box-shadow: none !important
 }
-.wrapper{
+.wrapper{ 
     position: relative;
     // background: url(../../assets/carpooling-bg.jpg) no-repeat center center/cover;
     .overlay-wrapper{
@@ -138,5 +138,49 @@ ion-menu{
     ion-content{
         background: #f0f0f0;
     }
+}
+ion-toolbar{
+    color: #f2f2f2;
+    height: 350px;
+    width: 100%;
+    background: #7590d6;
+    background: linear-gradient(-90deg, #f581ff 0%, #4d71d7 100%);
+    box-shadow: 0px 1px 10px rgba(98, 140, 255, .5);
+    border-radius: 0px 0px 0px 70px;
+}
+ul.list-rides{
+    direction: rtl;
+    position: relative;
+
+    li:first-child::before{
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        // background-color: #5356e6;
+        border: 1px solid #5356e6;
+        top: 33px;
+        right: -8px;
+        border-radius: 100%;
+    }
+    li:last-child::before{ 
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        border: 1px solid #5356e6;
+        background-color: #5356e6;
+        bottom: 29px;
+        right: -8px;
+        border-radius: 100%;
+    }
+}
+ul.list-rides::before{
+    content: "";
+    position: absolute;
+    height: 40px;
+    top: 56px;
+    right: -2px;
+    border: 1px dashed #5356e6;
 }
 
