@@ -3,11 +3,15 @@
     <div class="overlay-wrapper"></div>
     <ion-header  class="ion-no-border"> 
       <ion-toolbar>
-        <div class="flex-inbetween mt ">
+        <div class="flex item-center justify-between mt-3">
           <ion-button slot="start" class="box-none" style="--background: transparent">
             <ion-icon name="notifications-outline" color="light"></ion-icon>
           </ion-button>
-          <h1 class="title">معك</h1>
+          <div>
+            <span class="text-md grey-100">Nonstop - </span>
+            <span class="text-md grey-100">لاتوقف</span>
+          </div>
+          
           <ion-buttons dir="ltr">
             <ion-menu-button menu="main-menu">
               <ion-icon name="apps" color="light"></ion-icon>
@@ -17,14 +21,15 @@
         <div class="px-2">
 
           <div class="mt-5">
-            مرحبًا بكم في معاك هنا ، يمكنك العثور على الألعاب والسائقين
+            مرحبا بكم في تطبيقنا، لاتوقف
+            خدمات متنوعة لتوصيل الاشخاص و الطرود
           </div>
           <div class="mt-5">
             <ion-button color="light">
               أحدث الإعلانات
             </ion-button>
             <ion-button color="dark">
-              أحدث الإعلانات
+              معرفة المزيد عن خدماتنا
             </ion-button>
           </div>
         </div>
@@ -40,7 +45,9 @@
               </ion-fab-button>
             </div>
             <div class="flex-row justify-center item-center mt-2">
-              <h1 class="text-md">توصيل</h1>
+              <h1 class="text-md">
+                بين المدن
+                </h1>
             </div>
           </ion-card-content>
         </ion-card-header>
@@ -54,7 +61,7 @@
               </ion-fab-button>
             </div>
             <div class="flex-row justify-center item-center mt-2">
-              <h1 class="text-md">طرد</h1>
+              <h1 class="text-md">توصيل</h1>
             </div>
           </ion-card-content>
         </ion-card-header>
@@ -89,36 +96,32 @@
     </ion-card>
     <ion-card class="main-card">
       <ion-card-header>
-        <h3 class="title">أحدث الإعلانات</h3>
+        <h3 class="yellow-500">أحدث الإعلانات</h3>
       </ion-card-header>
       <ion-card-content class="card-content-no-padding">
         <ion-slides [options]="sliderConfig">
           <ion-slide *ngFor="let ride of rides">
             <ion-card class="one">
               <div class="overlay"></div>
-              <ion-card-content>
-                
-                
+              <ion-card-content>      
                 <ion-item lines="none">
                   <ion-icon name="pin-outline" slot="start" size="small"></ion-icon>
                   <ion-label> 
                     <!-- {{ride.details.depart}} :  -->
-                    fffff
-                    <span style="color: rgb(86, 97, 252)">11:30</span></ion-label>
+                    jeddah, La mecque
+                    <!-- <span style="color: rgb(86, 97, 252)">11:30</span> -->
+                  </ion-label>
                 </ion-item>
-                <ion-item lines="none">
+                <!-- <ion-item lines="none">
                   <ion-icon name="golf-outline" slot="start" size="small" ></ion-icon>
                   <ion-label> 
-                    <!-- {{ride.details.arrival}} :  -->
                     <span style="color: rgb(86, 97, 252)">14:30</span> </ion-label>
-                </ion-item>
+                </ion-item> -->
                 <ion-item lines="none">
                   <ion-icon name="cash-outline" slot="start" size="small" ></ion-icon>
                   <ion-label>
                     <div class="flex">
-                      <span>RSA / </span>
-                      455
-                      <!-- <h1>{{ride.price}}</h1> -->
+                      <span>RSA/87</span>
                     </div>
                   </ion-label> 
                 </ion-item>
@@ -128,9 +131,8 @@
                       <img src="../../assets/avatar.png" style="width: 50px; height: 50px; border-radius: 25px">
                     </div>
                     <div>
-                      dhre
-                      <!-- <h3>{{ride.name}}</h3> -->
-                      <span> 25 </span>
+                      <h4>muhammed</h4>
+                      <h6> 25 y/o</h6>
                     </div>
                     
                   </div>

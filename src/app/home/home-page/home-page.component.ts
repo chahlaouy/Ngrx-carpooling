@@ -17,7 +17,7 @@ export class HomePageComponent implements OnInit {
   sliderConfig = {
     spaceBetween: 10,
     centeredSlides: false,
-    slidesPerView: 1.4
+    slidesPerView: 1.2
   }
 
   currentUser= null;
