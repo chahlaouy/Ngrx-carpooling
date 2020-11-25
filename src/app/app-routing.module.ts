@@ -28,6 +28,10 @@ const routes: Routes = [
     loadChildren: () => import('./driver/driver.module').then( m => m.DriverModule)
   },
   {
+    path: 'payment',
+    loadChildren: () => import('./payment/payment.module').then( m => m.PaymentModule)
+  },
+  {
     path: 'admin',
     loadChildren: () => import('./super-user/super-user.module').then( m => m.SuperUserModule)
   },
