@@ -1,3 +1,31 @@
-<p>
-  visa-card works!
-</p>
+<ion-header >
+  <ion-toolbar>
+    <ion-title class="grey-100">
+      طرق الدفع
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="light" dir="ltr">
+<div class="flower">
+  <img width="400px" height="300px" src="../assets/flower.jpg"/>
+  <div class="text"> Buy a beatiful flower for <strong> 20$</strong></div>
+</div>
+
+<div class="content card">
+  <h2 class="title"> Payment </h2>
+
+  <form action="/charge" method="post" id="payment-form">
+
+    <div class="paymentBox">
+      <div id="card-element">
+      </div>
+
+      <button id="button"> Pay </button>
+      <div id="card-errors" role="alert"></div>
+    </div>
+
+  </form>
+</div>
+
+</ion-content>

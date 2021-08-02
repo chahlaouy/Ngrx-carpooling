@@ -49,7 +49,7 @@ import { environment } from 'src/environments/environment';
 
 import { AgmCoreModule } from '@agm/core';
 
-
+import { AngularFireFunctions } from '@angular/fire/functions'
 /**
  * Angular Forms
  */
@@ -78,7 +78,7 @@ import { ReactiveFormsModule } from '@angular/forms'
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDK_H25782ntfx8P1phlMxs1KngoieEaYw',
       libraries: ['places']
-    })
+    }),
   ],
 
   providers: [

@@ -1,3 +1,37 @@
-<p>
-  master-card works!
-</p>
+<ion-header >
+  <ion-toolbar>
+    <ion-title class="grey-100">
+      طرق الدفع
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="light" dir="ltr">
+<div class="flower">
+  <img width="400px" height="300px" src="../assets/carpooling-logo.png"/>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        Total Amount is  <strong class="text-xl">  20$</strong>
+      </ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+</div>
+
+<div class="content card">
+  <h2 class="title"> بيانات الاعتماد  </h2>
+
+  <form action="/charge" method="post" id="payment-form">
+
+    <div class="paymentBox">
+      <div id="card-element">
+      </div>
+
+      <button id="button"> تأكيد الدفع </button>
+      <div id="card-errors" role="alert"></div>
+    </div>
+
+  </form>
+</div>
+
+</ion-content>

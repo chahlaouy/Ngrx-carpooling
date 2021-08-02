@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  
+  stripe: {
+    testKey: "pk_test_51HlQt5AOYmkBFRPiobK1xcueD7vOxqorJIPLnNXmQs8rY3Vydcg5szMTfh9XmbI6KrIZeQ5P5q3wt0Op6D96yDQ7009arhI3sB"
+  },
   firebaseConfig : {
     apiKey: "AIzaSyC0OeakqaXKDEDwjbbnuiyLEegUyuymh84",
     authDomain: "carpooling-7d926.firebaseapp.com",
